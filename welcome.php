@@ -62,19 +62,7 @@
 </nav> 
 
     <?php
-        $host = 'localhost';
-        $dbname = 'classicmodels';
-        $username = 'root';
-        $password = '';
-
-            try {
-                $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-                echo "Connected to $dbname at $host successfully.";
-                $conn = null;
-            } catch (PDOException $pe) {
-                die("Could not connect to the database $dbname :" . $pe->getMessage());
-            }
-        
+        include('admincp/config/config.php');
         echo "<h1>Hello</h1> <br>\n";
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         echo "Date is: " . date('d-m-y, h:i:sa');

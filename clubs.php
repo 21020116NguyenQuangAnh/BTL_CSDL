@@ -65,19 +65,8 @@
 
 <h1 style="color: darkblue"> Clubs </h1>
     <?php
-        $host = 'localhost';
-        $dbname = 'classicmodels';
-        $username = 'root';
-        $password = '';
+        include('admincp/config/config.php');
 
-            try {
-                $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-                //echo "Connected to $dbname at $host successfully.";
-                $conn = null;
-            } catch (PDOException $pe) {
-                die("Could not connect to the database $dbname :" . $pe->getMessage());
-            }
-        
     ?>
 
     </body>
