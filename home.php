@@ -153,7 +153,6 @@ $query_bxh = mysqli_query($conn, $sql_bxh);
 </div>
 
 <?php
-include('admincp/config/config.php');
 $sql_player = 'select * from players order by market_value_in_gbp desc limit 9';
 $query_player = mysqli_query($conn, $sql_player);
 ?>
@@ -166,11 +165,12 @@ $query_player = mysqli_query($conn, $sql_player);
         while ($row = mysqli_fetch_array($query_player)) {
             $i++;
             ?>
-            <div class="card" style>
+            <div class="card">
                 <img class="card-img-top" src="<?php echo$row['image_url']?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo$row['pretty_name']?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>"
+                       class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php

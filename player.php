@@ -90,7 +90,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -117,7 +117,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -144,7 +144,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -171,7 +171,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -198,7 +198,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -225,7 +225,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -252,7 +252,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -279,7 +279,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -306,7 +306,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -333,7 +333,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -360,7 +360,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -387,7 +387,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -414,7 +414,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
@@ -440,7 +440,7 @@ $query_player = mysqli_query($conn, $sql_player);
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
             </div>
             <?php
