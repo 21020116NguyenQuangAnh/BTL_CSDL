@@ -37,7 +37,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center">
+<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
     <!-- This is the "brand" that goes all the way to the left. -->
     <a class="navbar-brand d-flex w-50 mr-auto" href="/project/Web-test/welcome.php">FIO team</a>
 
@@ -69,12 +69,14 @@
     </div>
 </nav>
 
-<h1 style="color: pink"> Home </h1>
+<div class="container-fluid" style="margin-top:80px">
+    <h1 style="color: red"> Home </h1>
+</div>
 
 <?php
 include('admincp/config/config.php');
 
-$sql_bxh = "select row_number() over (order by points desc, HS desc, BT desc) as STT,
+$sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
         home.pretty_name as Clubs,
         home.home_played + away.away_played as PL,
         home.home_points + away.away_points as points,
@@ -93,7 +95,7 @@ $sql_bxh = "select row_number() over (order by points desc, HS desc, BT desc) as
         sum(games.home_club_goals) home_goals,
         sum(games.away_club_goals) home_conceded_goals
         from games inner join clubs c1 on c1.club_id = games.home_club_id 
-        where games.competition_code = 'GB1' and games.season = 2021 group by c1.club_id) home 
+        where games.competition_code = \'GB1\' and games.season = 2021 group by c1.club_id) home 
         join (select c2.pretty_name, c2.club_id,
         sum(if(games.away_club_id is not null,1,0)) away_played,
         sum(if(games.home_club_goals < games.away_club_goals,3,if(games.home_club_goals = games.away_club_goals,1,0))) away_points,
@@ -103,8 +105,8 @@ $sql_bxh = "select row_number() over (order by points desc, HS desc, BT desc) as
         sum(games.home_club_goals) away_conceded_goals,
         sum(games.away_club_goals) away_goals
         from games inner join clubs c2 on c2.club_id = games.away_club_id 
-        where games.competition_code = 'GB1' and games.season = 2021 group by c2.club_id) away 
-        on home.club_id = away.club_id order by points DESC, HS desc, BT DESC;";
+        where games.competition_code = \'GB1\' and games.season = 2021 group by c2.club_id) away 
+        on home.club_id = away.club_id order by points DESC, HS desc, BT DESC;';
 $query_bxh = mysqli_query($conn, $sql_bxh);
 ?>
 
@@ -128,26 +130,53 @@ $query_bxh = mysqli_query($conn, $sql_bxh);
         <tbody>
         <?php
         $i = 0;
-        while($row = mysqli_fetch_array($query_bxh)) {
+        while ($row = mysqli_fetch_array($query_bxh)) {
             $i++;
-        ?>
-        <tr>
-            <td><?php echo $i ?> </td>
-            <td><?php echo $row['Clubs'] ?> </td>
-            <td><?php echo $row['PL'] ?> </td>
-            <td><?php echo $row['points'] ?> </td>
-            <td><?php echo $row['W'] ?> </td>
-            <td><?php echo $row['D'] ?> </td>
-            <td><?php echo $row['L'] ?> </td>
-            <td><?php echo $row['BT'] ?> </td>
-            <td><?php echo $row['BB'] ?> </td>
-            <td><?php echo $row['HS'] ?> </td>
-        </tr>
-        <?php
+            ?>
+            <tr>
+                <td><?php echo $i ?> </td>
+                <td><?php echo $row['Clubs'] ?> </td>
+                <td><?php echo $row['PL'] ?> </td>
+                <td><?php echo $row['points'] ?> </td>
+                <td><?php echo $row['W'] ?> </td>
+                <td><?php echo $row['D'] ?> </td>
+                <td><?php echo $row['L'] ?> </td>
+                <td><?php echo $row['BT'] ?> </td>
+                <td><?php echo $row['BB'] ?> </td>
+                <td><?php echo $row['HS'] ?> </td>
+            </tr>
+            <?php
         }
         ?>
         </tbody>
     </table>
+</div>
+
+<?php
+include('admincp/config/config.php');
+$sql_player = 'select * from players order by market_value_in_gbp desc limit 9';
+$query_player = mysqli_query($conn, $sql_player);
+?>
+
+<div class="container">
+    <h2>Most valuable players</h2>
+    <div class="card-group">
+        <?php
+        $i = 0;
+        while ($row = mysqli_fetch_array($query_player)) {
+            $i++;
+            ?>
+            <div class="card" style>
+                <img class="card-img-top" src="<?php echo$row['image_url']?>" alt="Card image">
+                <div class="card-body">
+                    <h6 class="card-title"><?php echo$row['pretty_name']?></h6>
+                    <a href="/project/Web-test/player.php" class="btn btn-primary stretched-link">See Profile</a>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 </div>
 
 </body>
