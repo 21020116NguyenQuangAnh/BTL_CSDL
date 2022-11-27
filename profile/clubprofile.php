@@ -69,36 +69,19 @@
     </div>
 </nav>
 
-<div class="container-fluid" style="margin-top:80px">
-    <h1 style="color: darkblue"> Clubs </h1>
-</div>
-
 <?php
-include('admincp/config/config.php');
-$sql_club = 'SELECT * FROM `clubs` order by `total_market_value` desc limit 9;';
-$query_club = mysqli_query($conn, $sql_club);
+include('../admincp/config/config.php');
+$sql_club_info = "select * from clubs where club_id = $_GET[id]";
+$query_club_info = mysqli_query($conn, $sql_club_info);
+$row_title = mysqli_fetch_array($query_club_info);
 ?>
 
-<div class="container-fluid">
-    <h2>Most valuable clubs</h2>
-    <div class="card-group">
-        <?php
-        $i = 0;
-        while ($row = mysqli_fetch_array($query_club)) {
-            $i++;
-            ?>
-            <div class="card" style>
-                <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
-                <div class="card-body">
-                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="profile/clubprofile.php?value=club&id=<?php echo$row['club_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
-                </div>
-            </div>
-            <?php
-        }
-        ?>
-    </div>
+<div class="container" style="margin-top:80px">
+    <h1 style="color: royalblue"> <?php echo $row_title['pretty_name'] ?> </h1>
 </div>
 
-</body>
-</html>
+<div class="container">
+    <div class="card" style="width: 200px">
+        <img class="card-img-top" src="<?php echo $row_title['img_url'] ?>" alt="Card image">
+    </div>
+</div>
