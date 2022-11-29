@@ -68,6 +68,7 @@
            <i class="fa-solid fa-magnifying-glass"></i>
             </button>
     </form>
+
 </nav>
 
 <div class="container-fluid" style="margin-top:80px">

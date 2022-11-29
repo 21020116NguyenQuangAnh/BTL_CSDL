@@ -40,7 +40,6 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -68,6 +67,7 @@
            <i class="fa-solid fa-magnifying-glass"></i>
             </button>
     </form>
+
 </nav>
 
 <div class="container-fluid" style="margin-top:80px">
