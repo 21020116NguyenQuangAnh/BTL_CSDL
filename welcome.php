@@ -9,6 +9,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -29,52 +30,40 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center">
-  <!-- This is the "brand" that goes all the way to the left. -->
-  <a class="navbar-brand d-flex w-50 mr-auto" href="/project/Web-test/welcome.php">FIO team</a>
+<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
+    <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
 
-  <!-- This button replaces the links list when in mobile. -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="nav">
-    <!-- Create an unordered list to hold our links and format it automatically. -->
-    <ul class="nav navbar-nav mr-auto justify-content-end">
-      <!-- All the links in the navbar will be listed below as list items using the <li> tag. -->
-      <li class="nav-item">
-        <a class="nav-link" href="/project/Web-test/home.php">Home</a>
-      </li>
-      <li class="nav-item">
-        <!-- To make them into links, we use the <a href="link"> tag. -->
-        <!-- The class="nav-link" part just makes them display nicely. -->
-        <a class="nav-link" href="/project/Web-test/player.php">Player</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/project/Web-test/clubs.php">Clubs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/project/Web-test/competitions.php">Competitions</a>
-      </li>
-    </ul>
-  </div>
-</nav> 
+    <div class="collapse navbar-collapse" id="nav">
+        <ul class="nav navbar-nav mr-auto justify-content-end">
+            <li class="col-sm-4"></li>
+            <li class="nav-item col-sm-2">
+                <a href="home.php" class="stretched-link text-center" style="color: black">Home</a>
+            </li>
+            <li class="nav-item col-sm-2">
+                <a href="player.php" class="stretched-link text-center" style="color: black">Player</a>
+            </li>
+            <li class="nav-item col-sm-2">
+                <a href="clubs.php" class="stretched-link text-center" style="color: black">Clubs</a>
+            </li>
+            <li class="nav-item col-sm-2">
+                <a href="competitions.php" class="stretched-link text-center" style="color: black">Competitions</a>
+            </li>
+        </ul>
+    </div>
+    <form action="" id="search-box">
+            <input type="text" id="search-text"> 
+            <button id="search-btn">
+           <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+    </form>
+</nav>
 
     <?php
-        $host = 'localhost';
-        $dbname = 'classicmodels';
-        $username = 'root';
-        $password = '';
-
-            try {
-                $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-                echo "Connected to $dbname at $host successfully.";
-                $conn = null;
-            } catch (PDOException $pe) {
-                die("Could not connect to the database $dbname :" . $pe->getMessage());
-            }
-        
+        include('admincp/config/config.php');
         echo "<h1>Hello</h1> <br>\n";
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         echo "Date is: " . date('d-m-y, h:i:sa');
