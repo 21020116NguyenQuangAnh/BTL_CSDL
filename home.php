@@ -79,15 +79,21 @@
     <input class="col-sm-2" type="text" name="competitions" value="">
     <br>
     <a class="col-sm-2 text-left"> Years: </a>
-    <input class="col-sm-2" type="number" name="year" value="">
+    <input class="col-sm-2" type="text" name="year" value="">
     <button type="submit" class="text-left" >Gửi</button>
 </form>
 <?php
-if(isset($_POST["competitions"])) { $competitions= $_POST["competitions"]; } 
+if(isset($_POST["competitions"])) { $competitions= $_POST["competitions"];}
+else { $competitions = 'GB1';}
 if(isset($_POST["year"])) { $year= $_POST["year"]; }
+else { $year = 2021;}
+//$competitions= $_POST["competitions"];
+//$year= $_POST["year"];
 include('admincp/config/config.php');
 
 $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
+        home.club_id,
+        home.img_url as Logo,
         home.pretty_name as Clubs,
         home.home_played + away.away_played as PL,
         home.home_points + away.away_points as points,
@@ -97,7 +103,7 @@ $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as
         home.home_goals + away.away_goals as BT,
         home.home_conceded_goals + away.away_conceded_goals as BB,
         home.home_goals + away.away_goals - (home.home_conceded_goals + away.away_conceded_goals) as HS
-        from (select c1.pretty_name, c1.club_id,
+        from (select c1.pretty_name, c1.club_id, c1.img_url,
         sum(if(games.home_club_id is not null,1,0)) home_played,
         sum(if(games.home_club_goals > games.away_club_goals,3,if(games.home_club_goals = games.away_club_goals,1,0))) home_points,
         sum(if(games.home_club_goals > games.away_club_goals,1,0)) home_wins,
@@ -107,7 +113,7 @@ $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as
         sum(games.away_club_goals) home_conceded_goals
         from games inner join clubs c1 on c1.club_id = games.home_club_id 
         where games.competition_code = ? and games.season = ? group by c1.club_id) home 
-        join (select c2.pretty_name, c2.club_id,
+        join (select c2.pretty_name, c2.club_id, c2.img_url,
         sum(if(games.away_club_id is not null,1,0)) away_played,
         sum(if(games.home_club_goals < games.away_club_goals,3,if(games.home_club_goals = games.away_club_goals,1,0))) away_points,
         sum(if(games.home_club_goals < games.away_club_goals,1,0)) away_wins,
@@ -119,12 +125,14 @@ $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as
         where games.competition_code = ? and games.season = ? group by c2.club_id) away 
         on home.club_id = away.club_id order by points DESC, HS desc, BT DESC;';
 $query_bxh = $conn->prepare($sql_bxh);
-$query_bxh->bind_param("ssss",$competitions,$year,$competitions,$year);
+$query_bxh->bind_param("ssss",$competitions,$year, $competitions, $year);
 $query_bxh->execute();
+$query_ltb = $query_bxh->get_result();
+//$query_bxh = mysqli_query($conn, $sql_bxh);
 ?>
 
 <div class="container">
-    <h2>Premier League Table</h2>
+    <h2>League Table</h2>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -143,12 +151,14 @@ $query_bxh->execute();
         <tbody>
         <?php
         $i = 0;
-        while ($row = $query_bxh->fetch()) {
+        while ($row = $query_ltb->fetch_array()) {
             $i++;
             ?>
             <tr>
                 <td><?php echo $i ?> </td>
-                <td><?php echo $row['Clubs'] ?> </td>
+                <td><a href="profile/clubprofile.php?value=club&id=<?php echo$row['club_id'] ?>"</a>
+                    <img src ="<?php echo $row['Logo']?>", style="width: 50px", alt = "Card image">
+                    <?php echo $row['Clubs'] ?> </td>
                 <td><?php echo $row['PL'] ?> </td>
                 <td><?php echo $row['points'] ?> </td>
                 <td><?php echo $row['W'] ?> </td>
