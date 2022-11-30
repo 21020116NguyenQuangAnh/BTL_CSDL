@@ -110,6 +110,7 @@ from games inner join clubs c2 on c2.club_id = games.away_club_id
 where games.competition_code = \'GB1\' and games.season = 2021 group by c2.club_id) away 
 on home.club_id = away.club_id order by points DESC, HS desc, BT DESC;';
 $query_bxh = mysqli_query($conn, $sql_bxh);
+
 ?>
 
 <div class="container">
