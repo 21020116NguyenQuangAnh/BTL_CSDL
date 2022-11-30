@@ -90,7 +90,7 @@ $query_club = mysqli_query($conn, $sql_club);
             $i++;
             ?>
             <div class="card" style>
-                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
                     <a href="profile/clubprofile.php?value=club&id=<?php echo$row['club_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
