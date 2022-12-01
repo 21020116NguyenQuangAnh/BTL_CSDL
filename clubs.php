@@ -62,18 +62,44 @@
             </li>
         </ul>
     </div>
-    <form action="" id="search-box">
-            <input type="text" id="search-text"> 
-            <button id="search-btn">
-           <i class="fa-solid fa-magnifying-glass"></i>
+
+    <form action="" id="search-box" method="post">
+            <input  type="text" name="club" value="" id="search-text"> 
+            <button type="submit" id="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
             </button>
     </form>
+
+    <?php
+        include('admincp/config/config.php');
+        if(isset($_POST["club"])) { $club_name= $_POST["club"];}
+        $sql1 = 'SELECT * FROM clubs WHERE UPPER(`pretty_name`)=UPPER(?);';
+        $club_id = $conn->prepare($sql1);
+        $club_id->bind_param("s",$club_name);
+        $club_id->execute();
+        $club = $club_id->get_result();
+    ?>
 
 </nav>
 
 <div class="container-fluid" style="margin-top:80px">
     <h1 style="color: darkblue"> Clubs </h1>
 </div>
+
+<?php
+        if ($row = $club->fetch_array()) { 
+            ?>
+            <div class="card" style>
+                <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image" style="width:150px;height:180px;">
+                <div class="card-body">
+                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                    <a href="profile/clubprofile.php?value=club&id=<?php echo$row['club_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
+                </div>
+            </div>
+            <?php
+        }
+        else {
+    ?>
 
 <?php
 include('admincp/config/config.php');
@@ -101,6 +127,6 @@ $query_club = mysqli_query($conn, $sql_club);
         ?>
     </div>
 </div>
-
+<?php } ?>
 </body>
 </html>

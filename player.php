@@ -61,18 +61,43 @@
             </li>
         </ul>
     </div>
-    <form action="" id="search-box">
-            <input type="text" id="search-text"> 
-            <button id="search-btn">
-           <i class="fa-solid fa-magnifying-glass"></i>
+    
+    <form action="" id="search-box" method="post">
+            <input  type="text" name="player" value="" id="search-text"> 
+            <button type="submit" id="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
             </button>
     </form>
 
+    <?php
+        include('admincp/config/config.php');
+        if(isset($_POST["player"])) { $player_name= $_POST["player"];}
+        $sql = 'SELECT `player_id`,`pretty_name`,`image_url` FROM `players` WHERE UPPER(`pretty_name`)=UPPER(?);';
+        $player_id = $conn->prepare($sql);
+        $player_id->bind_param("s",$player_name);
+        $player_id->execute();
+        $player = $player_id->get_result();
+    ?>
 </nav>
 
 <div class="container-fluid" style="margin-top:80px">
     <h1 style="color: chartreuse"> Player </h1>
 </div>
+    <?php
+        if ($row = $player->fetch_array()) { 
+            ?>
+            <div class="card" style>
+                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image" style="width:150px;height:180px;">
+                <div class="card-body">
+                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
+                </div>
+            </div>
+            <?php
+        }
+        else {
+    ?>
+
 <?php
 include('admincp/config/config.php');
 $sql_player = 'select * from players order by market_value_in_gbp desc limit 9';
@@ -449,6 +474,6 @@ $query_player = mysqli_query($conn, $sql_player);
         ?>
     </div>
 </div>
-
+<?php } ?>
 </body>
 </html>
