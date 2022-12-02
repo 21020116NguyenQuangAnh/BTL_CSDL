@@ -74,7 +74,7 @@
 
 <div class="container-fluid" style="margin-top:80px">
     <h1 style="color: red"> Home </h1>
-</div> r
+</div>
 <?php
 include('admincp/config/config.php');
 
@@ -142,9 +142,8 @@ $query_ltb = $query_bxh->get_result();
             ?>
             <tr>
                 <td><?php echo $i ?> </td>
-                <td><a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"</a>
-                    <img src="<?php echo $row['Logo'] ?>" , style="width: 25px" , alt="Card image">
-                    <?php echo $row['Clubs'] ?> </td>
+                <td><img src="<?php echo $row['Logo'] ?>" , align="middle", height="25" , alt="Card image">
+                    &nbsp;&nbsp;<a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"</a><?php echo $row['Clubs'] ?> </td>
                 <td><?php echo $row['PL'] ?> </td>
                 <td><?php echo $row['points'] ?> </td>
                 <td><?php echo $row['W'] ?> </td>
