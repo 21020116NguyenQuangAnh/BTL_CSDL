@@ -10,7 +10,9 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -62,10 +64,10 @@
         </ul>
     </div>
     <form action="" id="search-box">
-            <input type="text" id="search-text"> 
-            <button id="search-btn">
-           <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
+        <input type="text" id="search-text">
+        <button id="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
     </form>
 
 </nav>
@@ -73,6 +75,7 @@
 <div class="container-fluid" style="margin-top:80px">
     <h1 style="color: red"> Home </h1>
 </div>
+<<<<<<< Updated upstream
 <?php
 include('admincp/config/config.php');
 
@@ -110,6 +113,70 @@ from games inner join clubs c2 on c2.club_id = games.away_club_id
 where games.competition_code = \'GB1\' and games.season = 2021 group by c2.club_id) away 
 on home.club_id = away.club_id order by points DESC, HS desc, BT DESC;';
 $query_bxh = mysqli_query($conn, $sql_bxh);
+=======
+
+<form action="" method="post">
+    <a class="col-sm-2 text-left"> Competition: </a>
+    <input class="col-sm-2" type="text" name="competitions" value="">
+    <br>
+    <a class="col-sm-2 text-left"> Years: </a>
+    <input class="col-sm-2" type="text" name="year" value="">
+    <button type="submit" class="text-left">Gửi</button>
+</form>
+<?php
+if (isset($_POST["competitions"])) {
+    $competitions = $_POST["competitions"];
+} else {
+    $competitions = 'GB1';
+}
+if (isset($_POST["year"])) {
+    $year = $_POST["year"];
+} else {
+    $year = 2021;
+}
+//$competitions= $_POST["competitions"];
+//$year= $_POST["year"];
+include('admincp/config/config.php');
+
+$sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
+        home.club_id,
+        home.img_url as Logo,
+        home.pretty_name as Clubs,
+        home.home_played + away.away_played as PL,
+        home.home_points + away.away_points as points,
+        home.home_wins + away.away_wins as W,
+        home.home_draws + away.away_draws as D,
+        home.home_loses + away.away_loses as L,
+        home.home_goals + away.away_goals as BT,
+        home.home_conceded_goals + away.away_conceded_goals as BB,
+        home.home_goals + away.away_goals - (home.home_conceded_goals + away.away_conceded_goals) as HS
+        from (select c1.pretty_name, c1.club_id, c1.img_url,
+        sum(if(games.home_club_id is not null,1,0)) home_played,
+        sum(if(games.home_club_goals > games.away_club_goals,3,if(games.home_club_goals = games.away_club_goals,1,0))) home_points,
+        sum(if(games.home_club_goals > games.away_club_goals,1,0)) home_wins,
+        sum(if(games.home_club_goals = games.away_club_goals,1,0)) home_draws,
+        sum(if(games.home_club_goals < games.away_club_goals,1,0)) home_loses,
+        sum(games.home_club_goals) home_goals,
+        sum(games.away_club_goals) home_conceded_goals
+        from games inner join clubs c1 on c1.club_id = games.home_club_id 
+        where games.competition_code = ? and games.season = ? group by c1.club_id) home 
+        join (select c2.pretty_name, c2.club_id, c2.img_url,
+        sum(if(games.away_club_id is not null,1,0)) away_played,
+        sum(if(games.home_club_goals < games.away_club_goals,3,if(games.home_club_goals = games.away_club_goals,1,0))) away_points,
+        sum(if(games.home_club_goals < games.away_club_goals,1,0)) away_wins,
+        sum(if(games.home_club_goals = games.away_club_goals,1,0)) away_draws,
+        sum(if(games.home_club_goals > games.away_club_goals,1,0)) away_loses,
+        sum(games.home_club_goals) away_conceded_goals,
+        sum(games.away_club_goals) away_goals
+        from games inner join clubs c2 on c2.club_id = games.away_club_id 
+        where games.competition_code = ? and games.season = ? group by c2.club_id) away 
+        on home.club_id = away.club_id order by points DESC, HS desc, BT DESC;';
+$query_bxh = $conn->prepare($sql_bxh);
+$query_bxh->bind_param("ssss", $competitions, $year, $competitions, $year);
+$query_bxh->execute();
+$query_ltb = $query_bxh->get_result();
+//$query_bxh = mysqli_query($conn, $sql_bxh);
+>>>>>>> Stashed changes
 ?>
 
 <div class="container">
@@ -137,8 +204,13 @@ $query_bxh = mysqli_query($conn, $sql_bxh);
             ?>
             <tr>
                 <td><?php echo $i ?> </td>
+<<<<<<< Updated upstream
                 <td><a href="profile/clubprofile.php?value=club&id=<?php echo$row['club_id'] ?>">
                     <img src ="<?php echo $row['Logo']?>", style="width: 50px", alt = "Card image">
+=======
+                <td><a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"</a>
+                    <img src="<?php echo $row['Logo'] ?>" , style="width: 50px" , alt="Card image">
+>>>>>>> Stashed changes
                     <?php echo $row['Clubs'] ?> </td>
                 <td><?php echo $row['PL'] ?> </td>
                 <td><?php echo $row['points'] ?> </td>
@@ -157,29 +229,90 @@ $query_bxh = mysqli_query($conn, $sql_bxh);
 </div>
 
 <?php
-$sql_player = 'select * from players order by market_value_in_gbp desc limit 9';
+$sql_player = 'select * from players order by market_value_in_gbp desc limit 21';
 $query_player = mysqli_query($conn, $sql_player);
 ?>
-
 <div class="container">
     <h2>Most valuable players</h2>
-    <div class="card-group">
-        <?php
-        $i = 0;
-        while ($row = mysqli_fetch_array($query_player)) {
-            $i++;
-            ?>
-            <div class="card">
-                <img class="card-img-top" src="<?php echo$row['image_url']?>" alt="Card image">
-                <div class="card-body">
-                    <h6 class="card-title"><?php echo$row['pretty_name']?></h6>
-                    <a href="profile/playerprofile.php?value=player&id=<?php echo$row['player_id'] ?>"
-                       class="btn btn-primary stretched-link">See Profile</a>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card-deck">
+                    <?php
+                    $i = 0;
+                    $j = $i;
+                    while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        $i++;
+                        ?>
+                        <div class="card">
+                            <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                            <div class="card-body">
+                                <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            </div>
+                            <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                               class="btn btn-primary stretched-link">See Profile</a>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
-            <?php
-        }
-        ?>
+            <div class="carousel-item">
+                <div class="card-deck">
+                    <?php
+                    $j = $i;
+                    while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        $i++;
+                        ?>
+                        <div class="card">
+                            <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                            <div class="card-body">
+                                <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            </div>
+                            <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                               class="btn btn-primary stretched-link">See Profile</a>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card-deck">
+                    <?php
+                    while ($row = mysqli_fetch_array($query_player)) {
+                        $i++;
+                        ?>
+                        <div class="card">
+                            <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                            <div class="card-body">
+                                <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            </div>
+                            <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                               class="btn btn-primary stretched-link">See Profile</a>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
     </div>
 </div>
 

@@ -73,10 +73,6 @@
 <div class="container-fluid" style="margin-top:80px">
     <h1 style="color: darkred"> Competitions </h1>
 </div>
-
-
-
-
 <?php
 include('admincp/config/config.php');
 $test = 'SELECT DISTINCT `competition_code` FROM `games`;';
@@ -109,7 +105,30 @@ else { $year = 2021;}
 //$competitions= $_POST["competitions"];
 //$year= $_POST["year"];
 
-$sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
+    <form action="" method="post">
+        <a class="col-sm-2 text-left"> Competition: </a>
+        <input class="col-sm-2" type="text" name="competitions" value="">
+        <br>
+        <a class="col-sm-2 text-left"> Years: </a>
+        <input class="col-sm-2" type="text" name="year" value="">
+        <button type="submit" class="text-left">Gửi</button>
+    </form>
+    <?php
+    if (isset($_POST["competitions"])) {
+        $competitions = $_POST["competitions"];
+    } else {
+        $competitions = 'GB1';
+    }
+    if (isset($_POST["year"])) {
+        $year = $_POST["year"];
+    } else {
+        $year = 2021;
+    }
+    //$competitions= $_POST["competitions"];
+    //$year= $_POST["year"];
+    include('admincp/config/config.php');
+
+    $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
         home.club_id,
         home.img_url as Logo,
         home.pretty_name as Clubs,
@@ -188,12 +207,33 @@ $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as
                 <td><?php echo $row['BB'] ?> </td>
                 <td><?php echo $row['HS'] ?> </td>
             </tr>
+            </thead>
+            <tbody>
             <?php
-        }
-        ?>
-        </tbody>
-    </table>
+            $i = 0;
+            while ($row = $query_ltb->fetch_array()) {
+                $i++;
+                ?>
+                <tr>
+                    <td><?php echo $i ?> </td>
+                    <td><a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"</a>
+                        <img src="<?php echo $row['Logo'] ?>" , style="width: 50px" , alt="Card image">
+                        <?php echo $row['Clubs'] ?> </td>
+                    <td><?php echo $row['PL'] ?> </td>
+                    <td><?php echo $row['points'] ?> </td>
+                    <td><?php echo $row['W'] ?> </td>
+                    <td><?php echo $row['D'] ?> </td>
+                    <td><?php echo $row['L'] ?> </td>
+                    <td><?php echo $row['BT'] ?> </td>
+                    <td><?php echo $row['BB'] ?> </td>
+                    <td><?php echo $row['HS'] ?> </td>
+                </tr>
+                <?php
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
 </div>
-
 </body>
 </html>
