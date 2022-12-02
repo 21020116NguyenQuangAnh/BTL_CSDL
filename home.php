@@ -39,8 +39,54 @@
 
 </head>
 <body>
+<div class = "container-fluid">
+    <div id="pic" class="carousel slide" data-ride="carousel">
 
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="pic" data-slide-to="0" class="active"></li>
+            <li data-target="#pic" data-slide-to="1"></li>
+            <li data-target="#pic" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/player.jpg" alt="Player" style="width: fit-content; height: fit-content">
+                <div class="carousel-caption">
+                    <a href="player.php" style="color: white">
+                        <h1>Amazing players</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/comp.jpg" alt="Competition" style="width: fit-content; height: fit-content">
+                <div class="carousel-caption">
+                    <a href="competitions.php" style="color: white">
+                    <h1>Exciting competitions</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/chel.jpg" alt="Club" style="width: fit-content; height: fit-content">
+                <div class="carousel-caption">
+                    <a href="clubs.php" style="color: white">
+                        <h1>Famous clubs</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#pic" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#pic" data-slide="next" style="color: royalblue">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center sticky-top">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
@@ -75,6 +121,7 @@
 <div class="container-fluid" style="margin-top:80px">
     <h1 style="color: red"> Home </h1>
 </div>
+
 <?php
 include('admincp/config/config.php');
 
@@ -142,8 +189,9 @@ $query_ltb = $query_bxh->get_result();
             ?>
             <tr>
                 <td><?php echo $i ?> </td>
-                <td><img src="<?php echo $row['Logo'] ?>" , align="middle", height="25" , alt="Card image">
-                    &nbsp;&nbsp;<a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"</a><?php echo $row['Clubs'] ?> </td>
+                <td><img src="<?php echo $row['Logo'] ?>" , align="middle" , height="25" , alt="Card image">
+                    &nbsp;&nbsp;<a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"</a><?php echo $row['Clubs'] ?>
+                </td>
                 <td><?php echo $row['PL'] ?> </td>
                 <td><?php echo $row['points'] ?> </td>
                 <td><?php echo $row['W'] ?> </td>

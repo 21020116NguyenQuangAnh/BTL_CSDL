@@ -90,6 +90,7 @@
 <div class="container-fluid" style="margin-top:80px">
     <h1 style="color: chartreuse"> Player </h1>
 </div>
+
 <?php
 if ($row = $player->fetch_array()) {
     ?>
