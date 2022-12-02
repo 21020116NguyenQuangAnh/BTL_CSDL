@@ -10,7 +10,9 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -64,20 +66,22 @@
     </div>
 
     <form action="" id="search-box" method="post">
-            <input  type="text" name="club" value="" id="search-text"> 
-            <button type="submit" id="search-btn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
+        <input type="text" name="club" value="" id="search-text">
+        <button type="submit" id="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
     </form>
 
     <?php
-        include('admincp/config/config.php');
-        if(isset($_POST["club"])) { $club_name= $_POST["club"];}
-        $sql1 = 'SELECT * FROM clubs WHERE UPPER(`pretty_name`)=UPPER(?);';
-        $club_id = $conn->prepare($sql1);
-        $club_id->bind_param("s",$club_name);
-        $club_id->execute();
-        $club = $club_id->get_result();
+    include('admincp/config/config.php');
+    if (isset($_POST["club"])) {
+        $club_name = $_POST["club"];
+    }
+    $sql1 = "SELECT * FROM clubs WHERE pretty_name LIKE CONCAT('%',?,'%') ORDER BY total_market_value DESC LIMIT 50";
+    $club_id = $conn->prepare($sql1);
+    $club_id->bind_param("s", $club_name);
+    $club_id->execute();
+    $club = $club_id->get_result();
     ?>
 
 </nav>
@@ -87,46 +91,64 @@
 </div>
 
 <?php
-        if ($row = $club->fetch_array()) { 
-            ?>
-            <div class="card" style>
-                <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image" style="width:150px;height:180px;">
+if ($row = $club->fetch_array()) {
+    ?>
+    <div class="container">
+        <div class="row">
+            <div class="card" style="width: 180px">
+                <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image"
+                     style="width:150px;height:180px;">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                    <a href="profile/clubprofile.php?value=club&id=<?php echo$row['club_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
                 </div>
+                <a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
+                   class="btn btn-primary stretched-link">See Profile</a>
             </div>
             <?php
-        }
-        else {
+            while ($row = $club->fetch_array()) {
+                ?>
+                <div class="card" style="width: 180px">
+                    <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image"
+                         style="width:150px;height:180px;">
+                    <div class="card-body">
+                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                    </div>
+                    <a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
+                       class="btn btn-primary stretched-link">See Profile</a>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+    <?php
+} else {
+    include('admincp/config/config.php');
+    $sql_club = 'SELECT * FROM `clubs` order by `total_market_value` desc limit 9;';
+    $query_club = mysqli_query($conn, $sql_club);
     ?>
 
-<?php
-include('admincp/config/config.php');
-$sql_club = 'SELECT * FROM `clubs` order by `total_market_value` desc limit 9;';
-$query_club = mysqli_query($conn, $sql_club);
-?>
-
-<div class="container-fluid">
-    <h2>Most valuable clubs</h2>
-    <div class="card-group">
-        <?php
-        $i = 0;
-        while ($row = mysqli_fetch_array($query_club)) {
-            $i++;
-            ?>
-            <div class="card" style>
-                <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
-                <div class="card-body">
-                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
-                </div>
-                <a href="profile/clubprofile.php?value=club&id=<?php echo$row['club_id'] ?>" class="btn btn-primary stretched-link">See Profile</a>
-            </div>
+    <div class="container-fluid">
+        <h2>Most valuable clubs</h2>
+        <div class="card-group">
             <?php
-        }
-        ?>
+            $i = 0;
+            while ($row = mysqli_fetch_array($query_club)) {
+                $i++;
+                ?>
+                <div class="card" style>
+                    <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+                    <div class="card-body">
+                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                    </div>
+                    <a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
+                       class="btn btn-primary stretched-link">See Profile</a>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
     </div>
-</div>
 <?php } ?>
 </body>
 </html>

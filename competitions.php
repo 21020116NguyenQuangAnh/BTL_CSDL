@@ -75,20 +75,25 @@
 <div class="container-fluid" style="margin-top:80px">
     <h1 style="color: darkred"> Competitions </h1>
 </div>
+<div class="container-fluid">
+    <h2>
+        League Table
+    </h2>
+</div>
 <?php
 include('admincp/config/config.php');
-$test = 'SELECT DISTINCT `competition_code` FROM `games`;';
+$test = 'SELECT * FROM `competiions` WHERE `type` = "first_tier"';
 $test_list = mysqli_query($conn, $test);
 ?>
 
 <form action="" method="post">
     <a class="col-sm-2 text-left"> Competition: </a>
-    <select name="competitions" text="<?php $competitions ?>">
+    <select name="competitions" text="">
         <?php
         while ($row = mysqli_fetch_array($test_list)) {
-            printf("%s \n", $row["competition_code"]);
+            printf("%s \n", $row["competition_id"]);
             ?>
-            <option value="<?php echo $row["competition_code"] ?>"> <?php echo $row["competition_code"] ?> </option>
+            <option value="<?php echo $row["competition_id"] ?>"> <?php echo $row["competition_id"] ?> </option>
             <?php
         }
         ?>
@@ -110,30 +115,6 @@ if (isset($_POST["year"])) {
 } else {
     $year = 2021;
 }
-//$competitions= $_POST["competitions"];
-//$year= $_POST["year"];
-?>
-<form action="" method="post">
-    <a class="col-sm-2 text-left"> Competition: </a>
-    <input class="col-sm-2" type="text" name="competitions" value="">
-    <br>
-    <a class="col-sm-2 text-left"> Years: </a>
-    <input class="col-sm-2" type="text" name="year" value="">
-    <button type="submit" class="text-left">Gửi</button>
-</form>
-<?php
-if (isset($_POST["competitions"])) {
-    $competitions = $_POST["competitions"];
-} else {
-    $competitions = 'GB1';
-}
-if (isset($_POST["year"])) {
-    $year = $_POST["year"];
-} else {
-    $year = 2021;
-}
-//$competitions= $_POST["competitions"];
-//$year= $_POST["year"];
 include('admincp/config/config.php');
 
 $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
@@ -177,7 +158,7 @@ $query_ltb = $query_bxh->get_result();
 ?>
 
 <div class="container">
-    <h2>Premier League Table <br>
+    <h2>
         <?php echo $competitions ?> Season <?php echo $year ?>
     </h2>
     <table class="table table-bordered">
@@ -204,8 +185,8 @@ $query_ltb = $query_bxh->get_result();
             <tr>
                 <td><?php echo $i ?> </td>
                 <td><a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>">
-                        <img src="<?php echo $row['Logo'] ?>" , style="width: 50px" , alt="Card image">
-                        <?php echo $row['Clubs'] ?></td>
+                        <img src="<?php echo $row['Logo'] ?>" , style="width: 25px" , alt="Card image">
+                    <?php echo $row['Clubs'] ?></td>
                 <td><?php echo $row['PL'] ?> </td>
                 <td><?php echo $row['points'] ?> </td>
                 <td><?php echo $row['W'] ?> </td>
