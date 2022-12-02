@@ -203,8 +203,8 @@ $query_ltb = $query_bxh->get_result();
             ?>
             <tr>
                 <td><?php echo $i ?> </td>
-                <td><a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>">
-                        <img src="<?php echo $row['Logo'] ?>" , style="width: 50px" , alt="Card image">
+                <td><img src="<?php echo $row['Logo'] ?>" , align="middle", height="25" , alt="Card image">
+                    &nbsp;&nbsp;<a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>">
                         <?php echo $row['Clubs'] ?></td>
                 <td><?php echo $row['PL'] ?> </td>
                 <td><?php echo $row['points'] ?> </td>
