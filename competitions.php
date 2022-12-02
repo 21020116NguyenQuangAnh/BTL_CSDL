@@ -10,7 +10,9 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -62,10 +64,10 @@
         </ul>
     </div>
     <form action="" id="search-box">
-            <input type="text" id="search-text"> 
-            <button id="search-btn">
-           <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
+        <input type="text" id="search-text">
+        <button id="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
     </form>
 
 </nav>
@@ -76,7 +78,7 @@
 <?php
 include('admincp/config/config.php');
 $test = 'SELECT DISTINCT `competition_code` FROM `games`;';
-$test_list = mysqli_query($conn,$test);
+$test_list = mysqli_query($conn, $test);
 ?>
 
 <form action="" method="post">
@@ -84,51 +86,57 @@ $test_list = mysqli_query($conn,$test);
     <select name="competitions" text="<?php $competitions ?>">
         <?php
         while ($row = mysqli_fetch_array($test_list)) {
-        printf ("%s \n", $row["competition_code"]);
-        ?>
-        <option value= "<?php echo$row["competition_code"] ?>" > <?php echo$row["competition_code"] ?> </option>
-        <?php
+            printf("%s \n", $row["competition_code"]);
+            ?>
+            <option value="<?php echo $row["competition_code"] ?>"> <?php echo $row["competition_code"] ?> </option>
+            <?php
         }
         ?>
     </select>
     <br>
     <a class="col-sm-2 text-left"> Years: </a>
-        <input  type="text" name="year" value="">
-    <button type="submit" class="text-left" >Gửi</button>
+    <input type="text" name="year" value="">
+    <button type="submit" class="text-left">Gửi</button>
 </form>
 
 <?php
-if(isset($_POST["competitions"])) { $competitions= $_POST["competitions"];}
-else { $competitions = 'GB1';}
-if(isset($_POST["year"])) { $year= $_POST["year"]; }
-else { $year = 2021;}
+if (isset($_POST["competitions"])) {
+    $competitions = $_POST["competitions"];
+} else {
+    $competitions = 'GB1';
+}
+if (isset($_POST["year"])) {
+    $year = $_POST["year"];
+} else {
+    $year = 2021;
+}
 //$competitions= $_POST["competitions"];
 //$year= $_POST["year"];
+?>
+<form action="" method="post">
+    <a class="col-sm-2 text-left"> Competition: </a>
+    <input class="col-sm-2" type="text" name="competitions" value="">
+    <br>
+    <a class="col-sm-2 text-left"> Years: </a>
+    <input class="col-sm-2" type="text" name="year" value="">
+    <button type="submit" class="text-left">Gửi</button>
+</form>
+<?php
+if (isset($_POST["competitions"])) {
+    $competitions = $_POST["competitions"];
+} else {
+    $competitions = 'GB1';
+}
+if (isset($_POST["year"])) {
+    $year = $_POST["year"];
+} else {
+    $year = 2021;
+}
+//$competitions= $_POST["competitions"];
+//$year= $_POST["year"];
+include('admincp/config/config.php');
 
-    <form action="" method="post">
-        <a class="col-sm-2 text-left"> Competition: </a>
-        <input class="col-sm-2" type="text" name="competitions" value="">
-        <br>
-        <a class="col-sm-2 text-left"> Years: </a>
-        <input class="col-sm-2" type="text" name="year" value="">
-        <button type="submit" class="text-left">Gửi</button>
-    </form>
-    <?php
-    if (isset($_POST["competitions"])) {
-        $competitions = $_POST["competitions"];
-    } else {
-        $competitions = 'GB1';
-    }
-    if (isset($_POST["year"])) {
-        $year = $_POST["year"];
-    } else {
-        $year = 2021;
-    }
-    //$competitions= $_POST["competitions"];
-    //$year= $_POST["year"];
-    include('admincp/config/config.php');
-
-    $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
+$sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
         home.club_id,
         home.img_url as Logo,
         home.pretty_name as Clubs,
@@ -161,16 +169,16 @@ else { $year = 2021;}
         from games inner join clubs c2 on c2.club_id = games.away_club_id 
         where games.competition_code = ? and games.season = ? group by c2.club_id) away 
         on home.club_id = away.club_id order by points DESC, HS desc, BT DESC;';
-        $query_bxh = $conn->prepare($sql_bxh);
-        $query_bxh->bind_param("ssss",$competitions,$year,$competitions,$year);
-        $query_bxh->execute();
-        $query_ltb = $query_bxh->get_result();
+$query_bxh = $conn->prepare($sql_bxh);
+$query_bxh->bind_param("ssss", $competitions, $year, $competitions, $year);
+$query_bxh->execute();
+$query_ltb = $query_bxh->get_result();
 //$query_bxh = mysqli_query($conn, $sql_bxh);
 ?>
 
 <div class="container">
     <h2>Premier League Table <br>
-    <?php echo $competitions ?> Season <?php echo $year ?>
+        <?php echo $competitions ?> Season <?php echo $year ?>
     </h2>
     <table class="table table-bordered">
         <thead>
@@ -195,9 +203,9 @@ else { $year = 2021;}
             ?>
             <tr>
                 <td><?php echo $i ?> </td>
-                <td><a href="profile/clubprofile.php?value=club&id=<?php echo$row['club_id'] ?>">
-                    <img src ="<?php echo $row['Logo']?>", style="width: 50px", alt = "Card image">
-                    <?php echo $row['Clubs'] ?> </td>
+                <td><a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>">
+                        <img src="<?php echo $row['Logo'] ?>" , style="width: 50px" , alt="Card image">
+                        <?php echo $row['Clubs'] ?></td>
                 <td><?php echo $row['PL'] ?> </td>
                 <td><?php echo $row['points'] ?> </td>
                 <td><?php echo $row['W'] ?> </td>
@@ -207,33 +215,12 @@ else { $year = 2021;}
                 <td><?php echo $row['BB'] ?> </td>
                 <td><?php echo $row['HS'] ?> </td>
             </tr>
-            </thead>
-            <tbody>
             <?php
-            $i = 0;
-            while ($row = $query_ltb->fetch_array()) {
-                $i++;
-                ?>
-                <tr>
-                    <td><?php echo $i ?> </td>
-                    <td><a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"</a>
-                        <img src="<?php echo $row['Logo'] ?>" , style="width: 50px" , alt="Card image">
-                        <?php echo $row['Clubs'] ?> </td>
-                    <td><?php echo $row['PL'] ?> </td>
-                    <td><?php echo $row['points'] ?> </td>
-                    <td><?php echo $row['W'] ?> </td>
-                    <td><?php echo $row['D'] ?> </td>
-                    <td><?php echo $row['L'] ?> </td>
-                    <td><?php echo $row['BT'] ?> </td>
-                    <td><?php echo $row['BB'] ?> </td>
-                    <td><?php echo $row['HS'] ?> </td>
-                </tr>
-                <?php
-            }
-            ?>
-            </tbody>
-        </table>
-    </div>
+        }
+        ?>
+        </tbody>
+    </table>
+</div>
 </div>
 </body>
 </html>

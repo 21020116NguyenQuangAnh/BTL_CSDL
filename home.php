@@ -75,7 +75,6 @@
 <div class="container-fluid" style="margin-top:80px">
     <h1 style="color: red"> Home </h1>
 </div>
-<<<<<<< Updated upstream
 <?php
 include('admincp/config/config.php');
 
@@ -113,8 +112,7 @@ from games inner join clubs c2 on c2.club_id = games.away_club_id
 where games.competition_code = \'GB1\' and games.season = 2021 group by c2.club_id) away 
 on home.club_id = away.club_id order by points DESC, HS desc, BT DESC;';
 $query_bxh = mysqli_query($conn, $sql_bxh);
-=======
-
+?>
 <form action="" method="post">
     <a class="col-sm-2 text-left"> Competition: </a>
     <input class="col-sm-2" type="text" name="competitions" value="">
@@ -176,7 +174,6 @@ $query_bxh->bind_param("ssss", $competitions, $year, $competitions, $year);
 $query_bxh->execute();
 $query_ltb = $query_bxh->get_result();
 //$query_bxh = mysqli_query($conn, $sql_bxh);
->>>>>>> Stashed changes
 ?>
 
 <div class="container">
@@ -199,18 +196,13 @@ $query_ltb = $query_bxh->get_result();
         <tbody>
         <?php
         $i = 0;
-        while ($row = mysqli_fetch_array($query_bxh)) {
+        while ($row = $query_ltb->fetch_array()) {
             $i++;
             ?>
             <tr>
                 <td><?php echo $i ?> </td>
-<<<<<<< Updated upstream
-                <td><a href="profile/clubprofile.php?value=club&id=<?php echo$row['club_id'] ?>">
-                    <img src ="<?php echo $row['Logo']?>", style="width: 50px", alt = "Card image">
-=======
                 <td><a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"</a>
                     <img src="<?php echo $row['Logo'] ?>" , style="width: 50px" , alt="Card image">
->>>>>>> Stashed changes
                     <?php echo $row['Clubs'] ?> </td>
                 <td><?php echo $row['PL'] ?> </td>
                 <td><?php echo $row['points'] ?> </td>
