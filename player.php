@@ -44,17 +44,11 @@
             overflow-x:auto;
             overflow-y:hidden;
         }
-        #testTitle {
-            width:1510px;
-            height:70px;
-            overflow-x:auto;
-            overflow-y:hidden;
-        }
     </style>
 
 </head>
-<body>
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center sticky-top">
+<body style="background-color: aqua">
+<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
@@ -77,9 +71,10 @@
             </li>
         </ul>
     </div>
-    <form action="" id="search-box">
-        <input type="text" id="search-text">
-        <button id="search-btn">
+
+    <form action="" id="search-box" method="post">
+        <input type="text" name="player" value="" id="search-text">
+        <button type="submit" id="search-btn">
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
     </form>
@@ -101,8 +96,29 @@
     ?>
 </nav>
 
-<div class="container-fluid" style="margin-top:80px">
-    <h1 style="color: chartreuse"> Player </h1>
+<div class="latest-news" style="margin-top: 80px">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 title-section">
+                <h2 class="heading" style="color: white; border-left: 10px solid #b1154a; background-color: darkblue"> &nbsp;&nbsp;PLAYER </h2>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <div class="post-entry">
+                    <div class="caption">
+                        <div class="caption-inner">
+                            <div class="author d-flex align-items-center">
+                                <div class="img mb-2 mr-3">
+                                    <img src="images/player.jpg" alt="" width="1110px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php
@@ -140,7 +156,7 @@ if ($row = $player->fetch_array()) {
     <?php
 } else {
     include('admincp/config/config.php');
-    $sql_player = 'select * from players order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -161,7 +177,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -181,7 +197,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -219,10 +235,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#demo" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#demo" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -230,7 +246,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where position = \'Goalkeeper\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where position = \'Goalkeeper\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -241,8 +257,8 @@ if ($row = $player->fetch_array()) {
             <!-- Indicators -->
             <ul class="carousel-indicators">
                 <li data-target="#gk" data-slide-to="0" class="active"></li>
-                <li data-target="#gk" data-slide-to="1"></li>
-                <li data-target="#gk" data-slide-to="2"></li>
+                <li data-target="#gk" data-slide-to="1" class="active"></li>
+                <li data-target="#gk" data-slide-to="2" class="active"></li>
             </ul>
             <!-- The slideshow -->
             <div class="carousel-inner">
@@ -251,7 +267,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -271,7 +287,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -309,10 +325,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#gk" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#gk" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#gk" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#gk" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -320,7 +336,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Centre-Back\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Centre-Back\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -341,7 +357,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -361,7 +377,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -399,10 +415,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#cb" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#cb" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#cb" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%;" href="#cb" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -410,7 +426,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Left-Back\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Left-Back\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -431,7 +447,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -451,7 +467,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -489,10 +505,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#lb" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#lb" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#lb" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#lb" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -500,7 +516,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Right-Back\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Right-Back\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -521,7 +537,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -541,7 +557,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -579,10 +595,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#rb" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#rb" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#rb" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#rb" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -590,7 +606,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Defensive Midfield\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Defensive Midfield\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -611,7 +627,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -631,7 +647,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -669,10 +685,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#dm" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#dm" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#dm" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#dm" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -680,7 +696,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Central Midfield\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Central Midfield\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -701,7 +717,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -721,7 +737,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -759,10 +775,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#cm" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#cm" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#cm" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#cm" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -770,7 +786,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Left Midfield\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Left Midfield\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -791,7 +807,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -811,7 +827,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -849,10 +865,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#lm" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#lm" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#lm" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#lm" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -860,7 +876,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Right Midfield\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Right Midfield\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -881,7 +897,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -901,7 +917,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -939,10 +955,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#rm" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#rm" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#rm" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#rm" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -950,7 +966,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Attacking Midfield\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Attacking Midfield\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -971,7 +987,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -991,7 +1007,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -1029,10 +1045,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#am" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#am" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#am" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#am" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -1040,7 +1056,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Left Winger\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Left Winger\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -1063,7 +1079,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -1083,7 +1099,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -1122,10 +1138,10 @@ if ($row = $player->fetch_array()) {
 
             <!-- Left and right controls -->
             <div>
-                <a class="carousel-control-prev" href="#lw" data-slide="prev">
+                <a class="carousel-control-prev" style="width: 5%" href="#lw" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
-                <a class="carousel-control-next" href="#lw" data-slide="next">
+                <a class="carousel-control-next" style="width: 5%" href="#lw" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>
@@ -1134,7 +1150,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Right Winger\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Right Winger\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -1155,7 +1171,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -1175,7 +1191,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -1213,10 +1229,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#rw" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#rw" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#rw" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#rw" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -1224,7 +1240,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Second Striker\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Second Striker\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
 
@@ -1245,7 +1261,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -1265,7 +1281,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -1303,10 +1319,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#ss" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#ss" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#ss" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#ss" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -1314,7 +1330,7 @@ if ($row = $player->fetch_array()) {
 
     <?php
     include('admincp/config/config.php');
-    $sql_player = 'select * from players where sub_position = \'Centre-Forward\' order by market_value_in_gbp desc limit 21';
+    $sql_player = 'select * from players where sub_position = \'Centre-Forward\' order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
     ?>
     <div class="container">
@@ -1334,7 +1350,7 @@ if ($row = $player->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -1354,7 +1370,7 @@ if ($row = $player->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
                             <div class="card">
@@ -1392,10 +1408,10 @@ if ($row = $player->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#cf" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#cf" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#cf" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#cf" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>

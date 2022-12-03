@@ -38,7 +38,7 @@
     <meta name="theme-color" content="#fafafa">
 
 </head>
-<body>
+<body style="background-color: aqua">
 
 <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
@@ -86,8 +86,29 @@
 
 </nav>
 
-<div class="container-fluid" style="margin-top:80px">
-    <h1 style="color: darkblue"> Clubs </h1>
+<div class="latest-news" style="margin-top: 80px">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 title-section">
+                <h2 class="heading" style="color: white; border-left: 10px solid #b1154a; background-color: darkblue"> &nbsp;&nbsp;CLUBS </h2>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <div class="post-entry">
+                    <div class="caption">
+                        <div class="caption-inner">
+                            <div class="author d-flex align-items-center">
+                                <div class="img mb-2 mr-3">
+                                    <img src="images/chelsea.jpg" alt="" width="1110px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php
@@ -124,7 +145,7 @@ if ($row = $club->fetch_array()) {
     <?php
 } else {
     include('admincp/config/config.php');
-    $sql_club = 'SELECT * FROM `clubs` order by `total_market_value` desc limit 21;';
+    $sql_club = 'SELECT * FROM `clubs` order by `total_market_value` desc limit 18;';
     $query_club = mysqli_query($conn, $sql_club);
     ?>
 
@@ -145,7 +166,7 @@ if ($row = $club->fetch_array()) {
                         <?php
                         $i = 0;
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_club)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_club)) {
                             $i++;
                             ?>
                             <div class="card" style="background-color: gold">
@@ -165,7 +186,7 @@ if ($row = $club->fetch_array()) {
                     <div class="card-deck">
                         <?php
                         $j = $i;
-                        while ($i < $j + 7 and $row = mysqli_fetch_array($query_club)) {
+                        while ($i < $j + 6 and $row = mysqli_fetch_array($query_club)) {
                             $i++;
                             ?>
                             <div class="card" style="background-color: silver">
@@ -203,10 +224,10 @@ if ($row = $club->fetch_array()) {
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <a class="carousel-control-prev" style="width: 5%" href="#demo" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
+            <a class="carousel-control-next" style="width: 5%" href="#demo" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>

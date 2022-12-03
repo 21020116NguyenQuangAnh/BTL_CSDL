@@ -38,24 +38,25 @@
     <meta name="theme-color" content="#fafafa">
 
     <style type="text/css">
-        .test{
+        .test {
             width:1110px;
             height:350px;
             overflow-x:auto;
             overflow-y:hidden;
         }
-        #testTitle {
-            width:1510px;
-            height:70px;
+        .newtest {
+            width:1200px;
+            height:fit-content;
             overflow-x:auto;
             overflow-y:hidden;
         }
     </style>
 
 </head>
-<body>
+<body style="background-color: aqua">
 <div class = "container-fluid">
-    <div id="pic" class="carousel slide" data-ride="carousel">
+    <div id="pic" class="carousel slide newtest" data-ride="carousel">
+
         <!-- Indicators -->
         <ul class="carousel-indicators">
             <li data-target="pic" data-slide-to="0" class="active"></li>
@@ -66,7 +67,7 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/player.jpg" alt="Player" style="width: fit-content; height: fit-content">
+                <img src="images/player.jpg" alt="Player" style="width: 1200px; height: fit-content">
                 <div class="carousel-caption">
                     <a href="player.php" style="color: white">
                         <h1>Amazing players</h1>
@@ -74,15 +75,15 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/comp.jpg" alt="Competition" style="width: fit-content; height: fit-content">
+                <img src="images/comp.jpg" alt="Competition" style="width: 1200px; height: fit-content">
                 <div class="carousel-caption">
                     <a href="competitions.php" style="color: white">
-                    <h1>Exciting competitions</h1>
+                        <h1>Exciting competitions</h1>
                     </a>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/chel.jpg" alt="Club" style="width: fit-content; height: fit-content">
+                <img src="images/chelsea.jpg" alt="Club" style="width: 1200px; height: fit-content">
                 <div class="carousel-caption">
                     <a href="clubs.php" style="color: white">
                         <h1>Famous clubs</h1>
@@ -95,11 +96,12 @@
         <a class="carousel-control-prev" href="#pic" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </a>
-        <a class="carousel-control-next" href="#pic" data-slide="next">
+        <a class="carousel-control-next" href="#pic" data-slide="next" style="color: royalblue">
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
 </div>
+
 <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center sticky-top">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
@@ -132,8 +134,29 @@
 
 </nav>
 
-<div class="container-fluid" style="margin-top:80px">
-    <h1 style="color: red"> Home </h1>
+<div class="latest-news" style="margin-top: 80px">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 title-section">
+                <h2 class="heading" style="color: white; border-left: 10px solid #b1154a; background-color: darkblue"> &nbsp;&nbsp;HOME </h2>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <div class="post-entry">
+                    <div class="caption">
+                        <div class="caption-inner">
+                            <div class="author d-flex align-items-center">
+                                <div class="img mb-2 mr-3">
+                                    <img src="images/epl.jpg" alt="" width="1110px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php
@@ -179,47 +202,53 @@ $query_ltb = $query_bxh->get_result();
 ?>
 
 <div class="container">
-    <h2>Premier League Table</h2>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>STT</th>
-            <th>Clubs</th>
-            <th>PL</th>
-            <th>P</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
-            <th>BT</th>
-            <th>BB</th>
-            <th>HS</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        $i = 0;
-        while ($row = $query_ltb->fetch_array()) {
-            $i++;
-            ?>
-            <tr>
-                <td><?php echo $i ?> </td>
-                <td><img src="<?php echo $row['Logo'] ?>" , align="middle" , height="25" , alt="Card image">
-                    &nbsp;&nbsp;<a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"</a><?php echo $row['Clubs'] ?>
-                </td>
-                <td><?php echo $row['PL'] ?> </td>
-                <td><?php echo $row['points'] ?> </td>
-                <td><?php echo $row['W'] ?> </td>
-                <td><?php echo $row['D'] ?> </td>
-                <td><?php echo $row['L'] ?> </td>
-                <td><?php echo $row['BT'] ?> </td>
-                <td><?php echo $row['BB'] ?> </td>
-                <td><?php echo $row['HS'] ?> </td>
+    <br>
+    <h3 style="background-color: cyan; border-left: 10px solid #b1154a; color: midnightblue">
+        &nbsp;&nbsp;Premier league table
+    </h3>
+    <div class="widget-next-match">
+        <table class="table custom-table">
+            <thead>
+            <tr style="background-color: red; text-align: justify" class="text-white">
+                <th>STT</th>
+                <th>Teams</th>
+                <th>P</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+                <th>BT</th>
+                <th>BB</th>
+                <th>HS</th>
+                <th>PTS</th>
             </tr>
+            </thead>
+            <tbody style="background-color: white">
             <?php
-        }
-        ?>
-        </tbody>
-    </table>
+            $i = 0;
+            while ($row = $query_ltb->fetch_array()) {
+                $i++;
+                ?>
+                <tr>
+                    <td><?php echo $i ?> </td>
+                    <td><img src="<?php echo $row['Logo'] ?>" , align="middle" , height="25" , alt="Card image">
+                        &nbsp;&nbsp;<a
+                                href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"><strong
+                                    class="text-black"><?php echo $row['Clubs'] ?></strong></td>
+                    <td><?php echo $row['PL'] ?> </td>
+                    <td><?php echo $row['W'] ?> </td>
+                    <td><?php echo $row['D'] ?> </td>
+                    <td><?php echo $row['L'] ?> </td>
+                    <td><?php echo $row['BT'] ?> </td>
+                    <td><?php echo $row['BB'] ?> </td>
+                    <td><?php echo $row['HS'] ?> </td>
+                    <td><?php echo $row['points'] ?> </td>
+                </tr>
+                <?php
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <?php
@@ -233,8 +262,8 @@ $query_player = mysqli_query($conn, $sql_player);
         <!-- Indicators -->
         <ul class="carousel-indicators">
             <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
+            <li data-target="#demo" data-slide-to="1" class="active"></li>
+            <li data-target="#demo" data-slide-to="2" class="active"></li>
         </ul>
         <!-- The slideshow -->
         <div class="carousel-inner">
@@ -246,7 +275,7 @@ $query_player = mysqli_query($conn, $sql_player);
                     while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
                         $i++;
                         ?>
-                        <div class="card">
+                        <div class="card" style="background-color: silver">
                             <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                             <div class="card-body">
                                 <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
@@ -266,7 +295,7 @@ $query_player = mysqli_query($conn, $sql_player);
                     while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
                         $i++;
                         ?>
-                        <div class="card">
+                        <div class="card" style="background-color: silver">
                             <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                             <div class="card-body">
                                 <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
@@ -285,7 +314,7 @@ $query_player = mysqli_query($conn, $sql_player);
                     while ($row = mysqli_fetch_array($query_player)) {
                         $i++;
                         ?>
-                        <div class="card">
+                        <div class="card" style="background-color: silver">
                             <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                             <div class="card-body">
                                 <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
@@ -301,10 +330,10 @@ $query_player = mysqli_query($conn, $sql_player);
         </div>
 
         <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <a class="carousel-control-prev" style="width: 5%" href="#demo" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
+        <a class="carousel-control-next" style="width: 5%;" href="#demo" data-slide="next">
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>

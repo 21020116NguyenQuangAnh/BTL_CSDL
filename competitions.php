@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name=" viewport " content=" width = device-width, initial-scale = 1 ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Document</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity>
@@ -37,25 +36,30 @@
 
     <meta name="theme-color" content="#fafafa">
 
-    <style type="text/css">
-        .test{
-            width:1110px;
-            height:350px;
-            overflow-x:auto;
-            overflow-y:hidden;
-        }
-        #testTitle {
-            width:1510px;
-            height:70px;
-            overflow-x:auto;
-            overflow-y:hidden;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
+<body style="background-color: aqua">
 
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
@@ -86,38 +90,65 @@
     </form>
 
 </nav>
-
-<div class="container-fluid" style="margin-top:80px">
-    <h1 style="color: darkred"> Competitions </h1>
+<div class="latest-news" style="margin-top: 80px">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 title-section">
+                <h2 class="heading" style="color: white; border-left: 10px solid #b1154a; background-color: darkblue"> &nbsp;&nbsp;COMPETITIONS </h2>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <div class="post-entry">
+                    <div class="caption">
+                        <div class="caption-inner">
+                            <div class="author d-flex align-items-center">
+                                <div class="img mb-2 mr-3">
+                                    <img src="images/uefa.jpg" alt="" width="1110px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="container-fluid">
-    <h2>
-        League Table
-    </h2>
-</div>
-<?php
-include('admincp/config/config.php');
-$test = 'SELECT * FROM `competitions` WHERE type = "first_tier"';
-$test_list = mysqli_query($conn, $test);
-?>
-
-<form action="" method="post">
-    <a class="col-sm-2 text-left"> Competition: </a>
-    <select name="competitions" text="">
-        <?php
-        while ($row = mysqli_fetch_array($test_list)) {
-            printf("%s \n", $row["competition_id"]);
-            ?>
-            <option value="<?php echo $row["competition_id"] ?>"> <?php echo $row["competition_id"] ?> </option>
+<div class="container site-section" style="margin-top:80px">
+    <div class="row">
+        <div class="col-6 title-section">
+            <h2 class="heading">League Table</h2>
+        </div>
+        <div class="col-6 text-right">
+            <div class="custom-nav">
+                <a href="#" class="js-custom-prev-v2"><span class="icon-keyboard_arrow_left"></span></a>
+                <span></span>
+                <a href="#" class="js-custom-next-v2"><span class="icon-keyboard_arrow_right"></span></a>
+            </div>
+        </div>
+    </div>
+    <?php
+    include('admincp/config/config.php');
+    $test = 'SELECT * FROM `competitions` WHERE `type` = "first_tier"';
+    $test_list = mysqli_query($conn, $test);
+    ?>
+    <form action="" method="post">
+        <a class="col-sm-2">Competition: </a>
+        <select name="competitions" text="">
             <?php
-        }
-        ?>
-    </select>
-    <!--<br><br>-->
-    <a class="col-sm-2 text-left"> Years: </a>
-    <input type="text" name="year" value="">
-    <button type="submit" class="text-left">Search</button>
-</form>
+            while ($row = mysqli_fetch_array($test_list)) {
+                printf("%s \n", $row["competition_id"]);
+                ?>
+                <option value="<?php echo $row["competition_id"] ?>"><?php echo $row["competition_id"] ?> </option>
+                <?php
+            }
+            ?>
+        </select>
+        <a class="col-sm-2 text-left"> Years: </a>
+        <input type="text" name="year" value="">
+        <button type="submit" class="text-left">Search</button>
+    </form>
+</div>
 
 <?php
 if (isset($_POST["competitions"])) {
@@ -130,7 +161,6 @@ if (isset($_POST["year"])) {
 } else {
     $year = 2021;
 }
-include('admincp/config/config.php');
 
 $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
         home.club_id,
@@ -171,51 +201,65 @@ $query_bxh->bind_param("ssss", $competitions, $year, $competitions, $year);
 $query_bxh->execute();
 $query_ltb = $query_bxh->get_result();
 //$query_bxh = mysqli_query($conn, $sql_bxh);
+$sql_league = 'SELECT pretty_name FROM `competitions` WHERE competition_id = ?;';
+$query_league = $conn->prepare($sql_league);
+$query_league->bind_param("s",$competitions);
+$query_league->execute();
+$query_name = $query_league->get_result();
 ?>
 
 <div class="container">
     <h2>
-        <?php echo $competitions ?> Season <?php echo $year ?>
-    </h2>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>STT</th>
-            <th>Clubs</th>
-            <th>PL</th>
-            <th>P</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
-            <th>BT</th>
-            <th>BB</th>
-            <th>HS</th>
-        </tr>
-        </thead>
-        <tbody>
         <?php
-        $i = 0;
-        while ($row = $query_ltb->fetch_array()) {
-            $i++;
-            ?>
-            <tr>
-                <td><?php echo $i ?> </td>
-                <td><img src="<?php echo $row['Logo'] ?>" , align="middle", height="25" , alt="Card image">
-                    &nbsp;&nbsp;<a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"><?php echo $row['Clubs'] ?></td>
-                <td><?php echo $row['PL'] ?> </td>
-                <td><?php echo $row['points'] ?> </td>
-                <td><?php echo $row['W'] ?> </td>
-                <td><?php echo $row['D'] ?> </td>
-                <td><?php echo $row['L'] ?> </td>
-                <td><?php echo $row['BT'] ?> </td>
-                <td><?php echo $row['BB'] ?> </td>
-                <td><?php echo $row['HS'] ?> </td>
+        if ($name = $query_name->fetch_array()) {
+            echo $name['pretty_name'];
+        }?>
+        Season <?php echo $year ?>
+    </h2>
+    <div class="widget-next-match">
+        <table class="table custom-table">
+            <thead>
+            <tr style="background-color: red; text-align: justify" class="text-white">
+                <th>STT</th>
+                <th>Teams</th>
+                <th>P</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+                <th>BT</th>
+                <th>BB</th>
+                <th>HS</th>
+                <th>PTS</th>
             </tr>
+            </thead>
+            <tbody style="background-color: white">
             <?php
-        }
-        ?>
-        </tbody>
-    </table>
+            $i = 0;
+            while ($row = $query_ltb->fetch_array()) {
+                $i++;
+                ?>
+                <tr>
+                    <td><?php echo $i ?> </td>
+                    <td><img src="<?php echo $row['Logo'] ?>" , align="middle" , height="25" , alt="Card image">
+                        &nbsp;&nbsp;<a
+                                href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"><strong
+                                    class="text-black"><?php echo $row['Clubs'] ?></strong></td>
+                    <td><?php echo $row['PL'] ?> </td>
+                    <td><?php echo $row['W'] ?> </td>
+                    <td><?php echo $row['D'] ?> </td>
+                    <td><?php echo $row['L'] ?> </td>
+                    <td><?php echo $row['BT'] ?> </td>
+                    <td><?php echo $row['BB'] ?> </td>
+                    <td><?php echo $row['HS'] ?> </td>
+                    <td><?php echo $row['points'] ?> </td>
+                </tr>
+                <?php
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
 </div>
+<br><br><br><br>
 </body>
 </html>
