@@ -37,9 +37,24 @@
 
     <meta name="theme-color" content="#fafafa">
 
+    <style type="text/css">
+        .test{
+            width:1200px;
+            height:350px;
+            overflow-x:auto;
+            overflow-y:hidden;
+        }
+        #testTitle {
+            width:1510px;
+            height:70px;
+            overflow-x:auto;
+            overflow-y:hidden;
+        }
+    </style>
+
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
+<nav id="testTitle" class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
@@ -131,7 +146,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2>Most valuable players</h2>
-        <div id="demo" class="carousel slide" data-ride="carousel">
+        <div id="demo" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -221,7 +236,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color: gold">Most valuable GK</h2>
-        <div id="gk" class="carousel slide" data-ride="carousel">
+        <div id="gk" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -311,7 +326,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color: limegreen">Most valuable CB</h2>
-        <div id="cb" class="carousel slide" data-ride="carousel">
+        <div id="cb" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -401,7 +416,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color: limegreen">Most valuable LB</h2>
-        <div id="lb" class="carousel slide" data-ride="carousel">
+        <div id="lb" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -491,7 +506,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color: limegreen">Most valuable RB</h2>
-        <div id="rb" class="carousel slide" data-ride="carousel">
+        <div id="rb" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -581,7 +596,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color:blue">Most valuable DM</h2>
-        <div id="dm" class="carousel slide" data-ride="carousel">
+        <div id="dm" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -671,7 +686,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color:blue">Most valuable CM</h2>
-        <div id="cm" class="carousel slide" data-ride="carousel">
+        <div id="cm" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -761,7 +776,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color:blue">Most valuable LM</h2>
-        <div id="lm" class="carousel slide" data-ride="carousel">
+        <div id="lm" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -851,7 +866,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color:blue">Most valuable RM</h2>
-        <div id="rm" class="carousel slide" data-ride="carousel">
+        <div id="rm" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -941,7 +956,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color:blue">Most valuable AM</h2>
-        <div id="am" class="carousel slide" data-ride="carousel">
+        <div id="am" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -1031,7 +1046,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color:red">Most valuable LW</h2>
-        <div id="lw" class="carousel slide" data-ride="carousel">
+        <div id="lw" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <div>
@@ -1125,7 +1140,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color:red">Most valuable RW</h2>
-        <div id="rw" class="carousel slide" data-ride="carousel">
+        <div id="rw" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -1215,7 +1230,7 @@ if ($row = $player->fetch_array()) {
 
     <div class="container">
         <h2 style="color:red">Most valuable SS</h2>
-        <div id="ss" class="carousel slide" data-ride="carousel">
+        <div id="ss" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -1304,7 +1319,7 @@ if ($row = $player->fetch_array()) {
     ?>
     <div class="container">
         <h2 style="color:red">Most valuable CF</h2>
-        <div id="cf" class="carousel slide" data-ride="carousel">
+        <div id="cf" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">

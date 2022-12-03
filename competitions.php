@@ -37,10 +37,19 @@
 
     <meta name="theme-color" content="#fafafa">
 
+    <style type="text/css">
+        #testTitle {
+            width:1510px;
+            height:70px;
+            overflow-x:auto;
+            overflow-y:hidden;
+        }
+    </style>
+
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
+<nav id="testTitle" class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
@@ -81,8 +90,12 @@
     </h2>
 </div>
 <?php
-include('admincp/config/config.php');
-$test = 'SELECT * FROM `competiions` WHERE `type` = "first_tier"';
+$host = 'localhost';
+$dbname = 'football';
+$username = 'root';
+$password = '';
+$conn = new mysqli($host, $username, $password, $dbname);
+$test = 'SELECT * FROM `competitions` WHERE `type` = "first_tier"';
 $test_list = mysqli_query($conn, $test);
 ?>
 
@@ -98,10 +111,10 @@ $test_list = mysqli_query($conn, $test);
         }
         ?>
     </select>
-    <br>
+    <!--<br><br>-->
     <a class="col-sm-2 text-left"> Years: </a>
     <input type="text" name="year" value="">
-    <button type="submit" class="text-left">Gửi</button>
+    <button type="submit" class="text-left">Search</button>
 </form>
 
 <?php
@@ -139,7 +152,7 @@ $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as
         sum(games.away_club_goals) home_conceded_goals
         from games inner join clubs c1 on c1.club_id = games.home_club_id 
         where games.competition_code = ? and games.season = ? group by c1.club_id) home 
-        join (select c2.pretty_name, c2.club_id, c2.img_url,
+        inner join (select c2.pretty_name, c2.club_id, c2.img_url,
         sum(if(games.away_club_id is not null,1,0)) away_played,
         sum(if(games.home_club_goals < games.away_club_goals,3,if(games.home_club_goals = games.away_club_goals,1,0))) away_points,
         sum(if(games.home_club_goals < games.away_club_goals,1,0)) away_wins,
@@ -149,7 +162,8 @@ $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as
         sum(games.away_club_goals) away_goals
         from games inner join clubs c2 on c2.club_id = games.away_club_id 
         where games.competition_code = ? and games.season = ? group by c2.club_id) away 
-        on home.club_id = away.club_id order by points DESC, HS desc, BT DESC;';
+        on home.club_id = away.club_id 
+        order by points DESC, HS desc, BT DESC;';
 $query_bxh = $conn->prepare($sql_bxh);
 $query_bxh->bind_param("ssss", $competitions, $year, $competitions, $year);
 $query_bxh->execute();
@@ -185,8 +199,7 @@ $query_ltb = $query_bxh->get_result();
             <tr>
                 <td><?php echo $i ?> </td>
                 <td><img src="<?php echo $row['Logo'] ?>" , align="middle", height="25" , alt="Card image">
-                    &nbsp;&nbsp;<a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>">
-                        <?php echo $row['Clubs'] ?></td>
+                    &nbsp;&nbsp;<a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"><?php echo $row['Clubs'] ?></td>
                 <td><?php echo $row['PL'] ?> </td>
                 <td><?php echo $row['points'] ?> </td>
                 <td><?php echo $row['W'] ?> </td>
