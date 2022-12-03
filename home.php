@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name=" viewport " content=" width = device-width, initial-scale = 1 ">
     <title>Document</title>
 
@@ -37,25 +37,10 @@
 
     <meta name="theme-color" content="#fafafa">
 
-    <style type="text/css">
-        .test{
-            width:1110px;
-            height:350px;
-            overflow-x:auto;
-            overflow-y:hidden;
-        }
-        #testTitle {
-            width:1510px;
-            height:70px;
-            overflow-x:auto;
-            overflow-y:hidden;
-        }
-    </style>
-
 </head>
 <body>
 
-<nav id="testTitle" class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
@@ -181,7 +166,7 @@ $query_player = mysqli_query($conn, $sql_player);
 ?>
 <div class="container">
     <h2>Most valuable players</h2>
-    <div id="demo" class="carousel slide test" data-ride="carousel">
+    <div id="demo" class="carousel slide" data-ride="carousel">
 
         <!-- Indicators -->
         <ul class="carousel-indicators">
