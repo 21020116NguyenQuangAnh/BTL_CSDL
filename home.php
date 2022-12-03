@@ -56,8 +56,6 @@
 <body>
 <div class = "container-fluid">
     <div id="pic" class="carousel slide" data-ride="carousel">
-
-<<<<<<<<< Temporary merge branch 1
         <!-- Indicators -->
         <ul class="carousel-indicators">
             <li data-target="pic" data-slide-to="0" class="active"></li>
@@ -97,15 +95,12 @@
         <a class="carousel-control-prev" href="#pic" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </a>
-        <a class="carousel-control-next" href="#pic" data-slide="next" style="color: royalblue">
+        <a class="carousel-control-next" href="#pic" data-slide="next">
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
 </div>
 <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center sticky-top">
-=========
-<nav id="testTitle" class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
->>>>>>>>> Temporary merge branch 2
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>

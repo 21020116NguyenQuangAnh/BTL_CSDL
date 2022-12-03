@@ -39,7 +39,7 @@
 
     <style type="text/css">
         .test{
-            width:1200px;
+            width:1110px;
             height:350px;
             overflow-x:auto;
             overflow-y:hidden;
@@ -54,7 +54,7 @@
 
 </head>
 <body>
-<nav id="testTitle" class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center sticky-top">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
@@ -77,10 +77,9 @@
             </li>
         </ul>
     </div>
-
-    <form action="" id="search-box" method="post">
-        <input type="text" name="player" value="" id="search-text">
-        <button type="submit" id="search-btn">
+    <form action="" id="search-box">
+        <input type="text" id="search-text">
+        <button id="search-btn">
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
     </form>
