@@ -66,7 +66,7 @@
     </div>
 
     <form action="" id="search-box" method="post">
-        <input type="text" name="club" value="" id="search-text">
+        <input type="text" name="club" placeholder="Clubs" id="search-text">
         <button type="submit" id="search-btn">
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>

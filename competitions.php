@@ -82,19 +82,33 @@
             </li>
         </ul>
     </div>
-    <form action="" id="search-box">
-        <input type="text" id="search-text">
-        <button id="search-btn">
+    <form action="" id="search-box" method="post">
+        <input type="text" name="comp" placeholder="Competitions" id="search-text">
+        <button type="submit" id="search-btn">
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
     </form>
-
+    <?php
+    include('admincp/config/config.php');
+    if (isset($_POST["comp"])) {
+        $comp_name = $_POST["comp"];
+    } else {
+        $comp_name = "ahuhuahihi";
+    }
+    $sql_comp = "SELECT `competition_id`,`pretty_name`,`img_url` FROM `competitions` 
+                                             WHERE `pretty_name` LIKE CONCAT('%',?,'%')";
+    $comp_id = $conn->prepare($sql_comp);
+    $comp_id->bind_param("s", $comp_name);
+    $comp_id->execute();
+    $comp = $comp_id->get_result();
+    ?>
 </nav>
 <div class="latest-news" style="margin-top: 80px">
     <div class="container">
         <div class="row">
             <div class="col-12 title-section">
-                <h2 class="heading" style="color: white; border-left: 10px solid #b1154a; background-color: darkblue"> &nbsp;&nbsp;COMPETITIONS </h2>
+                <h2 class="heading" style="color: white; border-left: 10px solid #b1154a; background-color: darkblue">
+                    &nbsp;&nbsp;COMPETITIONS </h2>
             </div>
         </div>
         <div class="row no-gutters">
@@ -114,6 +128,39 @@
         </div>
     </div>
 </div>
+<?php
+if ($row = $comp->fetch_array()) {
+    ?>
+    <div class="container">
+        <div class="row" style="margin-left: 0">
+            <div class="card" style="width: 159px">
+                <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+                <div class="card-body">
+                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                </div>
+                <a href="profile/competitiondetails.php?value=comp&id=<?php echo $row['competition_id'] ?>"
+                   class="btn btn-primary stretched-link">See Profile</a>
+            </div>
+            <?php
+            while ($row = $comp->fetch_array()) {
+                ?>
+                <div class="card" style="width: 159px">
+                    <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+                    <div class="card-body">
+                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                    </div>
+                    <a href="profile/competitiondetails.php?value=comp&id=<?php echo $row['competition_id'] ?>"
+                       class="btn btn-primary stretched-link">See Profile</a>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+
+    <?php
+} else {
+?>
 <div class="container site-section" style="margin-top:80px">
     <div class="row">
         <div class="col-6 title-section">
@@ -139,7 +186,7 @@
             while ($row = mysqli_fetch_array($test_list)) {
                 printf("%s \n", $row["competition_id"]);
                 ?>
-                <option value="<?php echo $row["competition_id"] ?>"><?php echo $row['country_name'].'/'.$row["competition_id"]?> </option>
+                <option value="<?php echo $row["competition_id"] ?>"><?php echo $row['country_name'] . '/' . $row["competition_id"] ?> </option>
                 <?php
             }
             ?>
@@ -201,11 +248,15 @@ $query_bxh->bind_param("ssss", $competitions, $year, $competitions, $year);
 $query_bxh->execute();
 $query_ltb = $query_bxh->get_result();
 //$query_bxh = mysqli_query($conn, $sql_bxh);
+
 $sql_league = 'SELECT pretty_name FROM `competitions` WHERE competition_id = ?;';
 $query_league = $conn->prepare($sql_league);
-$query_league->bind_param("s",$competitions);
+$query_league->bind_param("s", $competitions);
 $query_league->execute();
 $query_name = $query_league->get_result();
+
+$sql_top = "SELECT * FROM `competitions` WHERE competition_id IN ('CL','GB1','ES1','L1','IT1','FR1');";
+$query_top = mysqli_query($conn, $sql_top);
 ?>
 
 <div class="container">
@@ -213,7 +264,7 @@ $query_name = $query_league->get_result();
         <?php
         if ($name = $query_name->fetch_array()) {
             echo $name['pretty_name'];
-        }?>
+        } ?>
         Season <?php echo $year ?>
     </h4>
     <div class="widget-next-match">
@@ -261,5 +312,29 @@ $query_name = $query_league->get_result();
     </div>
 </div>
 <br><br><br><br>
+
+<div class="container">
+    <h2>
+        Top European Competitions
+    </h2>
+    <div class="card-group">
+        <?php
+        $i = 0;
+        while ($row = mysqli_fetch_array($query_top)) {
+            $i++;
+            ?>
+            <div class="card" style>
+                <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+                <div class="card-body">
+                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                </div>
+                <a href="profile/competitiondetails.php?value=comp&id=<?php echo $row['competition_id'] ?>"
+                   class="btn btn-primary stretched-link">See Profile</a>
+            </div>
+            <?php
+        }
+        }
+        ?>
+    </div>
 </body>
 </html>

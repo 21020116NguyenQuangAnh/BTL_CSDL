@@ -125,13 +125,41 @@
             </li>
         </ul>
     </div>
-    <form action="" id="search-box">
-        <input type="text" id="search-text">
-        <button id="search-btn">
+    <form action="" id="search-box" method="post">
+        <input type="text" name="home" placeholder="Search" id="search-text">
+        <button type="submit" id="search-btn">
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
     </form>
+    <?php
+    include('admincp/config/config.php');
+    if (isset($_POST["home"])) {
+        $home_name = $_POST["home"];
+    } else {
+        $home_name = 19001008;
+    }
+    $sql = "SELECT `player_id`,`pretty_name`,`image_url` FROM `players` 
+                                             WHERE `pretty_name` LIKE CONCAT('%',?,'%') 
+                                             ORDER BY market_value_in_gbp DESC LIMIT 21 ";
+    $player_id = $conn->prepare($sql);
+    $player_id->bind_param("s", $home_name);
+    $player_id->execute();
+    $player = $player_id->get_result();
 
+    $sql1 = "SELECT * FROM clubs WHERE pretty_name LIKE CONCAT('%',?,'%') ORDER BY total_market_value DESC LIMIT 21";
+    $club_id = $conn->prepare($sql1);
+    $club_id->bind_param("s", $home_name);
+    $club_id->execute();
+    $club = $club_id->get_result();
+
+    $sql_comp = "SELECT `competition_id`,`pretty_name`,`img_url` FROM `competitions` 
+                                             WHERE `pretty_name` LIKE CONCAT('%',?,'%')
+                                             ORDER BY competition_id LIMIT 14";
+    $comp_id = $conn->prepare($sql_comp);
+    $comp_id->bind_param("s", $home_name);
+    $comp_id->execute();
+    $comp = $comp_id->get_result();
+    ?>
 </nav>
 
 <div class="latest-news" style="margin-top: 80px">
@@ -158,7 +186,107 @@
         </div>
     </div>
 </div>
+<?php
+if ($row = $player->fetch_array()) {
+?>
+<div class="container">
+    <h2>
+        <a href="player.php">Players</a>
+    </h2>
+    <div class="row" style="margin-left: 0">
+        <div class="card" style="width: 159px">
+            <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+            <div class="card-body">
+                <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+            </div>
+            <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+               class="btn btn-primary stretched-link">See Profile</a>
+        </div>
+        <?php
+        while ($row = $player->fetch_array()) {
+            ?>
+            <div class="card" style="width: 159px">
+                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                <div class="card-body">
+                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                </div>
+                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                   class="btn btn-primary stretched-link">See Profile</a>
+            </div>
+            <?php
+        }
+        }
+        ?>
+    </div>
+</div>
 
+<?php
+if ($row = $club->fetch_array()) {
+?>
+<div class="container">
+    <h2>
+        <a href="clubs.php">Clubs</a>
+    </h2>
+    <div class="row" style="margin-left: 0">
+        <div class="card" style="width: 159px">
+            <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+            <div class="card-body">
+                <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+            </div>
+            <a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
+               class="btn btn-primary stretched-link">See Profile</a>
+        </div>
+        <?php
+        while ($row = $club->fetch_array()) {
+            ?>
+            <div class="card" style="width: 159px">
+                <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+                <div class="card-body">
+                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                </div>
+                <a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
+                   class="btn btn-primary stretched-link">See Profile</a>
+            </div>
+            <?php
+        }
+        }
+        ?>
+    </div>
+</div>
+
+<?php
+if ($row = $comp->fetch_array()) {
+?>
+<div class="container">
+    <h2>
+        <a href="competitions.php">Competitions</a>
+    </h2>
+    <div class="row" style="margin-left: 0">
+        <div class="card" style="width: 159px">
+            <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+            <div class="card-body">
+                <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+            </div>
+            <a href="profile/competitiondetails.php?value=comp&id=<?php echo $row['competition_id'] ?>"
+               class="btn btn-primary stretched-link">See Profile</a>
+        </div>
+        <?php
+        while ($row = $comp->fetch_array()) {
+            ?>
+            <div class="card" style="width: 159px">
+                <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+                <div class="card-body">
+                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                </div>
+                <a href="profile/competitiondetails.php?value=comp&id=<?php echo $row['competition_id'] ?>"
+                   class="btn btn-primary stretched-link">See Profile</a>
+            </div>
+            <?php
+        }
+        }
+        ?>
+    </div>
+</div>
 <?php
 include('admincp/config/config.php');
 
@@ -339,5 +467,93 @@ $query_player = mysqli_query($conn, $sql_player);
     </div>
 </div>
 
+<?php
+$sql_club = 'SELECT * FROM `clubs` order by `total_market_value` desc limit 18;';
+$query_club = mysqli_query($conn, $sql_club);
+?>
+
+<div class="container">
+    <h2>Most valuable clubs</h2>
+    <div id="demo2" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo2" data-slide-to="0" class="active"></li>
+            <li data-target="#demo2" data-slide-to="1"></li>
+            <li data-target="#demo2" data-slide-to="2"></li>
+        </ul>
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card-deck">
+                    <?php
+                    $i = 0;
+                    $j = $i;
+                    while ($i < $j + 6 and $row = mysqli_fetch_array($query_club)) {
+                        $i++;
+                        ?>
+                        <div class="card" style="background-color: gold">
+                            <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+                            <div class="card-body">
+                                <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            </div>
+                            <a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
+                               class="btn btn-primary stretched-link">See Profile</a>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card-deck">
+                    <?php
+                    $j = $i;
+                    while ($i < $j + 6 and $row = mysqli_fetch_array($query_club)) {
+                        $i++;
+                        ?>
+                        <div class="card" style="background-color: silver">
+                            <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+                            <div class="card-body">
+                                <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            </div>
+                            <a href="profile/playerprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
+                               class="btn btn-primary stretched-link">See Profile</a>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card-deck">
+                    <?php
+                    while ($row = mysqli_fetch_array($query_club)) {
+                        $i++;
+                        ?>
+                        <div class="card" style="background-color: chocolate">
+                            <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
+                            <div class="card-body">
+                                <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            </div>
+                            <a href="profile/playerprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
+                               class="btn btn-primary stretched-link">See Profile</a>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" style="width: 5%" href="#demo2" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" style="width: 5%" href="#demo2" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
 </body>
 </html>

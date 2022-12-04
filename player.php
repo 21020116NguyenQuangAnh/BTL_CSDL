@@ -73,7 +73,7 @@
     </div>
 
     <form action="" id="search-box" method="post">
-        <input type="text" name="player" value="" id="search-text">
+        <input type="text" name="player" placeholder="Players" id="search-text">
         <button type="submit" id="search-btn">
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
