@@ -139,7 +139,7 @@
             while ($row = mysqli_fetch_array($test_list)) {
                 printf("%s \n", $row["competition_id"]);
                 ?>
-                <option value="<?php echo $row["competition_id"] ?>"><?php echo $row["competition_id"] ?> </option>
+                <option value="<?php echo $row["competition_id"] ?>"><?php echo $row['country_name'].'/'.$row["competition_id"]?> </option>
                 <?php
             }
             ?>
@@ -209,13 +209,13 @@ $query_name = $query_league->get_result();
 ?>
 
 <div class="container">
-    <h2>
+    <h4>
         <?php
         if ($name = $query_name->fetch_array()) {
             echo $name['pretty_name'];
         }?>
         Season <?php echo $year ?>
-    </h2>
+    </h4>
     <div class="widget-next-match">
         <table class="table custom-table">
             <thead>

@@ -125,10 +125,9 @@
 if ($row = $player->fetch_array()) {
     ?>
     <div class="container">
-        <div class="row">
-            <div class="card" style="width: 150px">
-                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image"
-                     style="width:150px;height:180px;">
+        <div class="row" style="margin-left: 0">
+            <div class="card" style="width: 159px">
+                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
                 </div>
@@ -138,9 +137,8 @@ if ($row = $player->fetch_array()) {
             <?php
             while ($row = $player->fetch_array()) {
                 ?>
-                <div class="card" style="width: 150px">
-                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image"
-                         style="width:150px;height:180px;">
+                <div class="card" style="width: 159px">
+                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                     <div class="card-body">
                         <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
                     </div>
