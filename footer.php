@@ -26,14 +26,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/demo4b.css">
 
-    <meta name="theme-color" content="#fafafa">
-
-    <style type="text/css">
-        body {
-            background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
-            background-repeat: repeat-y;
-        }
-    </style>
+  <meta name="theme-color" content="#fafafa">
 </head>
 <body>
 
@@ -68,19 +61,31 @@
             </button>
     </form>
 </nav>
-<div style="color: white;">
-    <br><br>   <br><br>
-    <h1 class="text-center">Welcome to the FIO team page</h1>
-    <div style="margin-left: 180px" style="margin-top: 80px">
-    <h2>Các bạn muốn tìm hiểu về:</h2>
-    <ul>
-        <li><a href="player.php" style="color: white">Thông tin cầu thủ</a> </li>
-        <li><a href="clubs.php" style="color: white">Thông tin đội bóng</a> </li>
-        <li><a href="competitions.php" style="color: white">Thông tin giải đấu</a> </li>
-    </ul>
-    </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div class="bigtext" style="color: white">
+        <div class="container row section" style="margin-left: 180px">
+        <div class="col-sm-4">
+            <a>Thành viên nhóm:</a>
+            <ul>
+                <li>Nguyễn Quang Anh</li>
+                <li>Phạm Minh Vương</li>
+                <li>Nguyễn Viết Tú</li>
+            </ul> 
+        </div>
+
+        <div class="col-sm-2">
+        </div>
+
+        <div class="col-sm-4">
+        <a>Thông tin liên hệ:</a>
+            <ul>
+                <li><a href="https://mail.google.com/mail/u/0/?zx=o0cldfu4983m#inbox?compose=new" style="color: white">21020116@vnu.edu.vn</a></li>
+                <li><a href="https://mail.google.com/mail/u/0/?zx=o0cldfu4983m#inbox?compose=new" style="color: white">21020425@vnu.edu.vn</a></li>
+                <li><a href="https://mail.google.com/mail/u/0/?zx=o0cldfu4983m#inbox?compose=new" style="color: white">21020092@vnu.edu.vn</a></li>
+            </ul> 
+        </div>
+        </div>
 </div>
-<?php include('footer.php'); ?>
+    
 </body>
 </html>
