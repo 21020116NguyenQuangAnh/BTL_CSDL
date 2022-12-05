@@ -342,7 +342,6 @@ $query_top = mysqli_query($conn, $sql_top);
                 </div>
                 <a href="profile/competitiondetails.php?value=comp&id=<?php echo $row['competition_id'] ?>"
                    class="btn btn-primary stretched-link">See Profile</a>
-                <br><br>
             </div>
             <?php
         }
