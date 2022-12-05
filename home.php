@@ -38,6 +38,12 @@
     <meta name="theme-color" content="#fafafa">
 
     <style type="text/css">
+        body {
+            background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
+            background-repeat: repeat-y;
+            color: white;
+        }
+
         .test {
             width:1110px;
             height:350px;
@@ -45,16 +51,17 @@
             overflow-y:hidden;
         }
         .newtest {
-            width:1200px;
-            height:fit-content;
-            overflow-x:auto;
-            overflow-y:hidden;
+            width: fit-content;
+            height: fit-content;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            margin-left: 3px;
         }
     </style>
 
 </head>
-<body style="background-color: aqua">
-<div class = "container-fluid">
+<body">
+<div class="container-fluid">
     <div id="pic" class="carousel slide newtest" data-ride="carousel">
 
         <!-- Indicators -->
@@ -67,7 +74,7 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/player.jpg" alt="Player" style="width: 1200px; height: fit-content">
+                <img src="images/player.jpg" alt="Player" style="width: fit-content; height: fit-content">
                 <div class="carousel-caption">
                     <a href="player.php" style="color: white">
                         <h1>Amazing players</h1>
@@ -75,7 +82,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/comp.jpg" alt="Competition" style="width: 1200px; height: fit-content">
+                <img src="images/comp.jpg" alt="Competition" style="width: fit-content; height: fit-content">
                 <div class="carousel-caption">
                     <a href="competitions.php" style="color: white">
                         <h1>Exciting competitions</h1>
@@ -83,7 +90,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/chelsea.jpg" alt="Club" style="width: 1200px; height: fit-content">
+                <img src="images/chelsea.jpg" alt="Club" style="width: fit-content; height: fit-content">
                 <div class="carousel-caption">
                     <a href="clubs.php" style="color: white">
                         <h1>Famous clubs</h1>
@@ -102,8 +109,8 @@
     </div>
 </div>
 
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center sticky-top">
-    <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
+<nav class="navbar navbar-expand-md navbar-light justify-content-center sticky-top" style="background-color: blue">
+    <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -112,16 +119,16 @@
         <ul class="nav navbar-nav mr-auto justify-content-end">
             <li class="col-sm-4"></li>
             <li class="nav-item col-sm-2">
-                <a href="home.php" class="stretched-link text-center" style="color: black">Home</a>
+                <a href="home.php" class="stretched-link text-center" style="color: white">Home</a>
             </li>
             <li class="nav-item col-sm-2">
-                <a href="player.php" class="stretched-link text-center" style="color: black">Player</a>
+                <a href="player.php" class="stretched-link text-center" style="color: white">Player</a>
             </li>
             <li class="nav-item col-sm-2">
-                <a href="clubs.php" class="stretched-link text-center" style="color: black">Clubs</a>
+                <a href="clubs.php" class="stretched-link text-center" style="color: white">Clubs</a>
             </li>
             <li class="nav-item col-sm-2">
-                <a href="competitions.php" class="stretched-link text-center" style="color: black">Competitions</a>
+                <a href="competitions.php" class="stretched-link text-center" style="color: white">Competitions</a>
             </li>
         </ul>
     </div>
@@ -189,7 +196,7 @@
 <?php
 if ($row = $player->fetch_array()) {
 ?>
-<div class="container">
+<div class="container" style="color: black">
     <h2>
         <a href="player.php">Players</a>
     </h2>
@@ -223,7 +230,7 @@ if ($row = $player->fetch_array()) {
 <?php
 if ($row = $club->fetch_array()) {
 ?>
-<div class="container">
+<div class="container" style="color: black">
     <h2>
         <a href="clubs.php">Clubs</a>
     </h2>
@@ -257,7 +264,7 @@ if ($row = $club->fetch_array()) {
 <?php
 if ($row = $comp->fetch_array()) {
 ?>
-<div class="container">
+<div class="container" style="color: black">
     <h2>
         <a href="competitions.php">Competitions</a>
     </h2>
@@ -337,7 +344,7 @@ $query_ltb = $query_bxh->get_result();
     <div class="widget-next-match">
         <table class="table custom-table">
             <thead>
-            <tr style="background-color: red; text-align: justify" class="text-white">
+            <tr style="background-color: red; text-align: justify" class="text-black">
                 <th>STT</th>
                 <th>Teams</th>
                 <th>P</th>
@@ -350,7 +357,7 @@ $query_ltb = $query_bxh->get_result();
                 <th>PTS</th>
             </tr>
             </thead>
-            <tbody style="background-color: white">
+            <tbody style="background-color: white; color: black">
             <?php
             $i = 0;
             while ($row = $query_ltb->fetch_array()) {
@@ -359,9 +366,8 @@ $query_ltb = $query_bxh->get_result();
                 <tr>
                     <td><?php echo $i ?> </td>
                     <td><img src="<?php echo $row['Logo'] ?>" , align="middle" , height="25" , alt="Card image">
-                        &nbsp;&nbsp;<a
-                                href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"><strong
-                                    class="text-black"><?php echo $row['Clubs'] ?></strong></td>
+                        &nbsp;&nbsp;<a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"><strong
+                                    class="text-black"><?php echo $row['Clubs'] ?></strong></a></td>
                     <td><?php echo $row['PL'] ?> </td>
                     <td><?php echo $row['W'] ?> </td>
                     <td><?php echo $row['D'] ?> </td>
@@ -380,7 +386,7 @@ $query_ltb = $query_bxh->get_result();
 </div>
 
 <?php
-$sql_player = 'select * from players order by market_value_in_gbp desc limit 21';
+$sql_player = 'select * from players order by market_value_in_gbp desc limit 18';
 $query_player = mysqli_query($conn, $sql_player);
 ?>
 <div class="container">
@@ -400,10 +406,10 @@ $query_player = mysqli_query($conn, $sql_player);
                     <?php
                     $i = 0;
                     $j = $i;
-                    while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                    while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                         $i++;
                         ?>
-                        <div class="card" style="background-color: silver">
+                        <div class="card" style="background-color: gold; color: black">
                             <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                             <div class="card-body">
                                 <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
@@ -420,10 +426,10 @@ $query_player = mysqli_query($conn, $sql_player);
                 <div class="card-deck">
                     <?php
                     $j = $i;
-                    while ($i < $j + 7 and $row = mysqli_fetch_array($query_player)) {
+                    while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                         $i++;
                         ?>
-                        <div class="card" style="background-color: silver">
+                        <div class="card" style="background-color: silver; color: black">
                             <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                             <div class="card-body">
                                 <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
@@ -442,7 +448,7 @@ $query_player = mysqli_query($conn, $sql_player);
                     while ($row = mysqli_fetch_array($query_player)) {
                         $i++;
                         ?>
-                        <div class="card" style="background-color: silver">
+                        <div class="card" style="background-color: chocolate">
                             <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                             <div class="card-body">
                                 <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
@@ -461,7 +467,7 @@ $query_player = mysqli_query($conn, $sql_player);
         <a class="carousel-control-prev" style="width: 5%" href="#demo" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </a>
-        <a class="carousel-control-next" style="width: 5%;" href="#demo" data-slide="next">
+        <a class="carousel-control-next" style="width: 5%" href="#demo" data-slide="next">
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
@@ -474,7 +480,7 @@ $query_club = mysqli_query($conn, $sql_club);
 
 <div class="container">
     <h2>Most valuable clubs</h2>
-    <div id="demo2" class="carousel slide" data-ride="carousel">
+    <div id="demo2" class="carousel slide test" data-ride="carousel">
 
         <!-- Indicators -->
         <ul class="carousel-indicators">
@@ -492,7 +498,7 @@ $query_club = mysqli_query($conn, $sql_club);
                     while ($i < $j + 6 and $row = mysqli_fetch_array($query_club)) {
                         $i++;
                         ?>
-                        <div class="card" style="background-color: gold">
+                        <div class="card" style="background-color: gold; color: black">
                             <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
                             <div class="card-body">
                                 <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
@@ -512,12 +518,12 @@ $query_club = mysqli_query($conn, $sql_club);
                     while ($i < $j + 6 and $row = mysqli_fetch_array($query_club)) {
                         $i++;
                         ?>
-                        <div class="card" style="background-color: silver">
+                        <div class="card" style="background-color: silver; color: black">
                             <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
                             <div class="card-body">
                                 <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
                             </div>
-                            <a href="profile/playerprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
+                            <a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
                                class="btn btn-primary stretched-link">See Profile</a>
                         </div>
                         <?php
@@ -536,7 +542,7 @@ $query_club = mysqli_query($conn, $sql_club);
                             <div class="card-body">
                                 <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
                             </div>
-                            <a href="profile/playerprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
+                            <a href="profile/clubprofile.php?value=club&id=<?php echo $row['club_id'] ?>"
                                class="btn btn-primary stretched-link">See Profile</a>
                         </div>
                         <?php
