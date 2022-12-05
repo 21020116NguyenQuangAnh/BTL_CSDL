@@ -28,39 +28,7 @@
 
   <meta name="theme-color" content="#fafafa">
 </head>
-<body>
-
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
-    <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="nav">
-        <ul class="nav navbar-nav mr-auto justify-content-end">
-            <li class="col-sm-4"></li>
-            <li class="nav-item col-sm-2">
-                <a href="home.php" class="stretched-link text-center" style="color: black">Home</a>
-            </li>
-            <li class="nav-item col-sm-2">
-                <a href="player.php" class="stretched-link text-center" style="color: black">Player</a>
-            </li>
-            <li class="nav-item col-sm-2">
-                <a href="clubs.php" class="stretched-link text-center" style="color: black">Clubs</a>
-            </li>
-            <li class="nav-item col-sm-2">
-                <a href="competitions.php" class="stretched-link text-center" style="color: black">Competitions</a>
-            </li>
-        </ul>
-    </div>
-    <form action="" id="search-box">
-            <input type="text" id="search-text"> 
-            <button id="search-btn">
-           <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-    </form>
-</nav>
+<body style="background-color: blue">
 
 <div class="bigtext" style="color: white">
         <div class="container row section" style="margin-left: 180px">

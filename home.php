@@ -38,7 +38,7 @@
     <meta name="theme-color" content="#fafafa">
 
     <style type="text/css">
-        body {
+        main {
             background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
             background-repeat: repeat-y;
             color: white;
@@ -60,7 +60,8 @@
     </style>
 
 </head>
-<body">
+<body>
+<main>
 <div class="container-fluid" style="margin-left: 50px">
     <div id="pic" class="carousel slide newtest" data-ride="carousel">
 
@@ -561,6 +562,9 @@ $query_club = mysqli_query($conn, $sql_club);
         </a>
     </div>
 </div>
+</main>
+<footer>
 <?php include('footer.php'); ?>
+</footer>
 </body>
 </html>
