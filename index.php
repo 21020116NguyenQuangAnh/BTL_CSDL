@@ -26,12 +26,20 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/demo4b.css">
 
-  <meta name="theme-color" content="#fafafa">
+    <meta name="theme-color" content="#fafafa">
+
+    <style type="text/css">
+        body {
+            background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
+            background-repeat: repeat-y;
+            background-color: royalblue;
+        }
+    </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
-    <a class="navbar-brand d-flex col-sm-4 mr-auto" href="welcome.php">FIO team</a>
+    <a class="navbar-brand d-flex col-sm-4 mr-auto" href="index.php">FIO team</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
@@ -61,16 +69,19 @@
             </button>
     </form>
 </nav>
-
-    <?php
-        include('admincp/config/config.php');
-        echo "<h1>Hello</h1> <br>\n";
-        date_default_timezone_set("Asia/Ho_Chi_Minh");
-        echo "Date is: " . date('d-m-y, h:i:sa');
-        echo "<br>";
-        $timestamp = time();
-        echo(date("d-m-Y h:i:s", $timestamp));
-    ?>
-    
+<div style="color: white;">
+    <br><br>   <br><br>
+    <h1 class="text-center">Welcome to the FIO team page</h1>
+    <div style="margin-left: 180px" style="margin-top: 80px">
+    <h2>Các bạn muốn tìm hiểu về:</h2>
+    <ul>
+        <li><a href="player.php" style="color: white">Thông tin cầu thủ</a> </li>
+        <li><a href="clubs.php" style="color: white">Thông tin đội bóng</a> </li>
+        <li><a href="competitions.php" style="color: white">Thông tin giải đấu</a> </li>
+    </ul>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+<?php include('footer.php'); ?>
 </body>
 </html>

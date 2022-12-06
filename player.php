@@ -38,7 +38,7 @@
     <meta name="theme-color" content="#fafafa">
 
     <style type="text/css">
-        body {
+        main {
             background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
             background-repeat: repeat-y;
             margin-bottom: 50px;
@@ -57,8 +57,9 @@
 
 </head>
 <body>
+<main>
 <nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
-    <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="welcome.php">FIO team</a>
+    <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="index.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -1424,5 +1425,9 @@ if ($row = $player->fetch_array()) {
         </div>
     </div>
 <?php } ?>
+</main>
+<footer>
+    <?php include('footer.php'); ?>
+</footer>
 </body>
 </html>
