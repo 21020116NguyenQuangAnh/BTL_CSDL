@@ -59,12 +59,13 @@
         body {
             background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
             background-repeat: repeat-y;
+            margin-bottom: 50px;
         }
-        .test{
-            width:1110px;
-            height:350px;
-            overflow-x:auto;
-            overflow-y:hidden;
+        .test {
+            width: 1110px;
+            height: 380px;
+            overflow-x: auto;
+            overflow-y: hidden;
         }
     </style>
 
@@ -304,8 +305,10 @@ $query_top = mysqli_query($conn, $sql_top);
                 ?>
                 <tr>
                     <td><?php echo $i ?> </td>
-                    <td><img src="<?php echo $row["Logo"] ?>" style="background-color: white" align="middle" height="25" alt="Card image">
-                        &nbsp;&nbsp;<a href="profile/clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
+                    <td><img src="<?php echo $row["Logo"] ?>" style="background-color: white" align="middle" height="25"
+                             alt="Card image">
+                        &nbsp;&nbsp;<a
+                                href="profile/clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
                                     class="text-black"><?php echo $row['Clubs'] ?></strong></a></td>
                     <td><?php echo $row['PL'] ?> </td>
                     <td><?php echo $row['W'] ?> </td>
@@ -344,7 +347,7 @@ $query_top = mysqli_query($conn, $sql_top);
                    class="btn btn-primary stretched-link">See Profile</a>
             </div>
             <?php
-        }
+            }
         }
         ?>
     </div>

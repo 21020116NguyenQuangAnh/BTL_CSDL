@@ -41,6 +41,7 @@
         body {
             background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
             background-repeat: repeat-y;
+            margin-bottom: 50px;
         }
 
         .test {
@@ -162,7 +163,7 @@ if ($row = $club->fetch_array()) {
     ?>
 
     <div class="container">
-        <h2 style="color: white">Most valuable clubs</h2>
+        <h2 style="color: white; border-left: 10px solid #b1154a;">&nbsp;&nbsp;Most valuable clubs</h2>
         <div id="demo" class="carousel slide test" data-ride="carousel">
 
             <!-- Indicators -->

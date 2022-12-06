@@ -42,6 +42,7 @@
             background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
             background-repeat: repeat-y;
             color: white;
+            margin-bottom: 50px;
         }
 
         .test {
@@ -51,64 +52,19 @@
             overflow-y:hidden;
         }
         .newtest {
-            width: fit-content;
+            width: 1500px;
             height: fit-content;
             overflow-x: hidden;
             overflow-y: hidden;
-            margin-left: 3px;
+        }
+        h2 {
+            color: white;
+            border-left: 10px solid #b1154a;
         }
     </style>
 
 </head>
-<body">
-<div class="container-fluid">
-    <div id="pic" class="carousel slide newtest" data-ride="carousel">
-
-        <!-- Indicators -->
-        <ul class="carousel-indicators">
-            <li data-target="pic" data-slide-to="0" class="active"></li>
-            <li data-target="#pic" data-slide-to="1"></li>
-            <li data-target="#pic" data-slide-to="2"></li>
-        </ul>
-
-        <!-- The slideshow -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/player.jpg" alt="Player" style="width: fit-content; height: fit-content">
-                <div class="carousel-caption">
-                    <a href="player.php" style="color: white">
-                        <h1>Amazing players</h1>
-                    </a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/comp.jpg" alt="Competition" style="width: fit-content; height: fit-content">
-                <div class="carousel-caption">
-                    <a href="competitions.php" style="color: white">
-                        <h1>Exciting competitions</h1>
-                    </a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/chelsea.jpg" alt="Club" style="width: fit-content; height: fit-content">
-                <div class="carousel-caption">
-                    <a href="clubs.php" style="color: white">
-                        <h1>Famous clubs</h1>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#pic" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#pic" data-slide="next" style="color: royalblue">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-    </div>
-</div>
-
+<body>
 <nav class="navbar navbar-expand-md navbar-light justify-content-center sticky-top" style="background-color: blue">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="welcome.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
@@ -168,6 +124,53 @@
     $comp = $comp_id->get_result();
     ?>
 </nav>
+<div class="container-fluid" style="margin-left: 0px">
+    <div id="pic" class="carousel slide newtest" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="pic" data-slide-to="0" class="active"></li>
+            <li data-target="#pic" data-slide-to="1"></li>
+            <li data-target="#pic" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/player.jpg" alt="Player" style="width: 1510px; height: fit-content;">
+                <div class="carousel-caption">
+                    <a href="player.php" style="color: white">
+                        <h1>Amazing players</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/comp.jpg" alt="Competition" style="width: 1510px; height: fit-content">
+                <div class="carousel-caption">
+                    <a href="competitions.php" style="color: white">
+                        <h1>Exciting competitions</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/chelsea.jpg" alt="Club" style="width: 1510px; height: fit-content">
+                <div class="carousel-caption">
+                    <a href="clubs.php" style="color: white">
+                        <h1>Famous clubs</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#pic" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#pic" data-slide="next" style="color: royalblue">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
 
 <div class="latest-news" style="margin-top: 80px">
     <div class="container">
@@ -390,7 +393,7 @@ $sql_player = 'select * from players order by market_value_in_gbp desc limit 18'
 $query_player = mysqli_query($conn, $sql_player);
 ?>
 <div class="container">
-    <h2>Most valuable players</h2>
+    <h2>&nbsp;&nbsp;Most valuable players</h2>
     <div id="demo" class="carousel slide test" data-ride="carousel">
 
         <!-- Indicators -->
@@ -479,7 +482,7 @@ $query_club = mysqli_query($conn, $sql_club);
 ?>
 
 <div class="container">
-    <h2>Most valuable clubs</h2>
+    <h2>&nbsp;&nbsp;Most valuable clubs</h2>
     <div id="demo2" class="carousel slide test" data-ride="carousel">
 
         <!-- Indicators -->
