@@ -56,39 +56,10 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
-    <a class="navbar-brand d-flex col-sm-4 mr-auto" href="index.php">FIO team</a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="nav">
-        <ul class="nav navbar-nav mr-auto justify-content-end">
-            <li class="col-sm-4"></li>
-            <li class="nav-item col-sm-2">
-                <a href="home.php" class="stretched-link text-center" style="color: black">Home</a>
-            </li>
-            <li class="nav-item col-sm-2">
-                <a href="player.php" class="stretched-link text-center" style="color: black">Player</a>
-            </li>
-            <li class="nav-item col-sm-2">
-                <a href="clubs.php" class="stretched-link text-center" style="color: black">Clubs</a>
-            </li>
-            <li class="nav-item col-sm-2">
-                <a href="competitions.php" class="stretched-link text-center" style="color: black">Competitions</a>
-            </li>
-        </ul>
-    </div>
-    <form action="" id="search-box">
-            <input type="text" id="search-text"> 
-            <button id="search-btn">
-           <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-    </form>
-</nav>
-<div style="color: white; margin-bottom: 500px; margin-top: 300px">
-    <h1 class="text-center" style = "font-family:courier,arial,helvetica;"><b>Welcome <br> FIO Team</b></h1>
+<div style="color: white; margin-bottom: 500px; margin-top: 250px">
+    <h1 class="text-center" style = "font-family:courier,arial,helvetica;"><b>Welcome <br> FIO Team <br></b>
+        <a href="home.php" class="btn btn-tertiary" style="color: white; background-color: red"><b>Explore</b></a>
+    </h1>
 </div>
 <?php include('footer.php'); ?>
 </body>

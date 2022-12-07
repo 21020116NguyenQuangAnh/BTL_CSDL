@@ -40,7 +40,6 @@
         body {
             background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
             background-repeat: repeat-y;
-            margin-bottom: 80px;
             background-color: blue;
         }
         .test {
