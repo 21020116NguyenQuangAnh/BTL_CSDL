@@ -28,6 +28,24 @@
 
     <meta name="theme-color" content="#fafafa">
 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+
     <style type="text/css">
         body {
             background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
@@ -69,18 +87,8 @@
             </button>
     </form>
 </nav>
-<div style="color: white;">
-    <br><br>   <br><br>
-    <h1 class="text-center">Welcome to the FIO team page</h1>
-    <div style="margin-left: 180px" style="margin-top: 80px">
-    <h2>Các bạn muốn tìm hiểu về:</h2>
-    <ul>
-        <li><a href="player.php" style="color: white">Thông tin cầu thủ</a> </li>
-        <li><a href="clubs.php" style="color: white">Thông tin đội bóng</a> </li>
-        <li><a href="competitions.php" style="color: white">Thông tin giải đấu</a> </li>
-    </ul>
-    </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+<div style="color: white; margin-bottom: 500px; margin-top: 300px">
+    <h1 class="text-center" style = "font-family:courier,arial,helvetica;"><b>Welcome <br> FIO Team</b></h1>
 </div>
 <?php include('footer.php'); ?>
 </body>

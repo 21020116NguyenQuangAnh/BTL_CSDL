@@ -59,7 +59,8 @@
         body {
             background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
             background-repeat: repeat-y;
-            margin-bottom: 50px;
+            margin-bottom: 80px;
+            background-color: blue;
         }
         .test {
             width: 1110px;
@@ -70,10 +71,10 @@
     </style>
 
 </head>
-<body>
+<main>
 
 <nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
-    <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="welcome.php">FIO team</a>
+    <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="index.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -351,5 +352,10 @@ $query_top = mysqli_query($conn, $sql_top);
         }
         ?>
     </div>
+</div>
+</main>
+    <footer style="background-color: #005ef7; margin-top: 20px">
+        <?php include('footer.php'); ?>
+    </footer>
 </body>
 </html>
