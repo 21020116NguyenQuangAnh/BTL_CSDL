@@ -64,7 +64,7 @@
         }
         .test {
             width: 1110px;
-            height: 380px;
+            height: fit-content;
             overflow-x: auto;
             overflow-y: hidden;
         }
@@ -270,7 +270,7 @@ $query_league->bind_param("s", $competitions);
 $query_league->execute();
 $query_name = $query_league->get_result();
 
-$sql_top = "SELECT * FROM `competitions` WHERE competition_id IN ('CL','GB1','ES1','L1','IT1','FR1');";
+$sql_top = "SELECT * FROM `competitions` WHERE competition_id IN ('GB1','ES1','L1','IT1','FR1');";
 $query_top = mysqli_query($conn, $sql_top);
 ?>
 

@@ -1,5 +1,6 @@
 body {
     margin-top: 20px;
+
 }
 
 .card-style1 {
@@ -25,7 +26,6 @@ body {
 section {
     padding: 120px 0;
     overflow: hidden;
-    background: #fff;
 }
 
 .mb-2-3, .my-2-3 {
@@ -133,7 +133,6 @@ body {
     line-height: 1.4285714286;
     color: #212529;
     text-align: left;
-    background-color: #f9f9fa
 }
 
 

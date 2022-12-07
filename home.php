@@ -50,7 +50,7 @@
             overflow-y:hidden;
         }
         .newtest {
-            width: 1500px;
+            width: fit-content;
             height: fit-content;
             overflow-x: hidden;
             overflow-y: hidden;
@@ -63,7 +63,7 @@
 
 </head>
 <main>
-<nav class="navbar navbar-expand-md navbar-light justify-content-center sticky-top" style="background-color: blue">
+<nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="index.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
@@ -135,7 +135,7 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/player.jpg" alt="Player" style="width: 1510px; height: fit-content;">
+                <img src="images/player.jpg" alt="Player" style="width: fit-content; height: fit-content;">
                 <div class="carousel-caption">
                     <a href="player.php" style="color: white">
                         <h1>Amazing players</h1>
@@ -143,7 +143,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/comp.jpg" alt="Competition" style="width: 1510px; height: fit-content">
+                <img src="images/comp.jpg" alt="Competition" style="width: fit-content; height: fit-content">
                 <div class="carousel-caption">
                     <a href="competitions.php" style="color: white">
                         <h1>Exciting competitions</h1>
@@ -151,7 +151,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/chelsea.jpg" alt="Club" style="width: 1510px; height: fit-content">
+                <img src="images/chelsea.jpg" alt="Club" style="width: fit-content; height: fit-content">
                 <div class="carousel-caption">
                     <a href="clubs.php" style="color: white">
                         <h1>Famous clubs</h1>

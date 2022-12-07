@@ -45,8 +45,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
-    <a class="navbar-brand d-flex col-sm-4 mr-auto" href="../index.php">FIO team</a>
+<nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
+    <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="index.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -55,27 +55,20 @@
         <ul class="nav navbar-nav mr-auto justify-content-end">
             <li class="col-sm-4"></li>
             <li class="nav-item col-sm-2">
-                <a href="../home.php" class="stretched-link text-center" style="color: black">Home</a>
+                <a href="../home.php" class="stretched-link text-center" style="color: white">Home</a>
             </li>
             <li class="nav-item col-sm-2">
-                <a href="../player.php" class="stretched-link text-center" style="color: black">Player</a>
+                <a href="../player.php" class="stretched-link text-center" style="color: white">Player</a>
             </li>
             <li class="nav-item col-sm-2">
-                <a href="../clubs.php" class="stretched-link text-center" style="color: black">Clubs</a>
+                <a href="../clubs.php" class="stretched-link text-center" style="color: white">Clubs</a>
             </li>
             <li class="nav-item col-sm-2">
-                <a href="../competitions.php" class="stretched-link text-center" style="color: black">Competitions</a>
-
+                <a href="../competitions.php" class="stretched-link text-center" style="color: white">Competitions</a>
             </li>
         </ul>
     </div>
 </nav>
-<form action="" id="search-box">
-    <input type="text" id="search-text">
-    <button id="search-btn">
-        <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
-</form>
 
 <?php
 include('../admincp/config/config.php');
@@ -110,9 +103,6 @@ $row_title = mysqli_fetch_array($query_comp_info);
                                 </div>
                                 <ul class="list-unstyled mb-1-9">
                                     <li class="mb-2 mb-xl-3 display-28"><span
-                                                class="display-26 text-secondary me-2 font-weight-600">Number of teams: </span><b> <?php echo $row_title['number_of_teams'] ?> </b>
-                                    </li>
-                                    <li class="mb-2 mb-xl-3 display-28"><span
                                                 class="display-26 text-secondary me-2 font-weight-600">League level: </span><b> <?php echo $row_title['type'] ?> </b>
                                     </li>
                                     <li class="mb-2 mb-xl-3 display-28"><span
@@ -125,6 +115,24 @@ $row_title = mysqli_fetch_array($query_comp_info);
                 </div>
             </div>
         </div>
+        <div class="container">
+            <form action="" method="post" style="color: darkblue">
+                <a class="col-sm-2 text-left"><b><h2>Season:</h2></b></a>
+                <input type="text" name="year" value="">
+                <button type="submit" class="text-left">Search</button>
+            </form>
+            <?php
+            $competitions = $row_title['competition_id'];
+            if (isset($_POST["year"])) {
+                $year = $_POST["year"];
+            } else {
+                $year = 2021;
+            }
+            ?>
+        </div>
+        <?php
+        if ($row_title['type'] === "first_tier") {
+        ?>
         <div class="container site-section">
             <div class="row">
                 <div class="col-6 title-section">
@@ -142,21 +150,9 @@ $row_title = mysqli_fetch_array($query_comp_info);
             <?php
             include('../admincp/config/config.php');
             ?>
-            <form action="" method="post" style="color: darkblue">
-                <a class="col-sm-2 text-left"><b>Season: </b></a>
-                <input type="text" name="year" value="">
-                <button type="submit" class="text-left">Search</button>
-            </form>
         </div>
         <br>
         <?php
-        $competitions = $row_title['competition_id'];
-        if (isset($_POST["year"])) {
-            $year = $_POST["year"];
-        } else {
-            $year = 2021;
-        }
-
         $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
         home.club_id,
         home.img_url as Logo,
@@ -255,6 +251,7 @@ $row_title = mysqli_fetch_array($query_comp_info);
                         </tr>
                         <?php
                     }
+                    }
                     ?>
                     </tbody>
                 </table>
@@ -262,6 +259,80 @@ $row_title = mysqli_fetch_array($query_comp_info);
         </div>
 
     </div>
+
+    <?php
+    $sql_best = 'SELECT players.*, clubs.club_id, clubs.img_url, clubs.pretty_name as club, sum(appearances.goals) as goals FROM `appearances` 
+inner join players on appearances.player_id = players.player_id 
+inner join games on appearances.game_id = games.game_id
+inner join clubs on appearances.player_club_id = clubs.club_id                                                  
+where games.competition_code = ? and games.season = ? 
+group by players.player_id 
+order by goals desc
+limit 20';
+    $sql_scorer = $conn->prepare($sql_best);
+    $sql_scorer->bind_param("ss", $competitions, $year);
+    $sql_scorer->execute();
+    $scorer = $sql_scorer->get_result();
+    ?>
+    <div class="container site-section" style="margin-top:40px">
+        <div class="row">
+            <div class="col-6 title-section">
+                <h2 class="heading" style="color: darkblue; border-left: 10px solid #b1154a">
+                    &nbsp;&nbsp;Best Goal Scorers </h2>
+            </div>
+            <div class="col-6 text-right">
+                <div class="custom-nav">
+                    <a href="#" class="js-custom-prev-v2"><span class="icon-keyboard_arrow_left"></span></a>
+                    <span></span>
+                    <a href="#" class="js-custom-next-v2"><span class="icon-keyboard_arrow_right"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="widget-next-match">
+            <table class="table custom-table">
+                <thead>
+                <tr style="background-color: red; text-align: justify" class="text-white">
+                    <th>STT</th>
+                    <th>Player</th>
+                    <th>Club</th>
+                    <th>Goals</th>
+                </tr>
+                </thead>
+                <tbody style="background-color: white">
+                <?php
+                $i = 0;
+                while ($row = $scorer->fetch_array()) {
+                $i++;
+                ?>
+                <tr>
+                    <td><?php echo $i ?> </td>
+                    <td><img src="<?php echo $row["image_url"] ?>" style="background-color: white" align="middle"
+                             height="50"
+                             alt="Card image">
+                        &nbsp;&nbsp;<a
+                                href="playerprofile.php?value=player&id=<?php echo $row["player_id"] ?>"><strong
+                                    class="text-black"><?php echo $row['pretty_name'] ?></strong></a></td></td>
+                    <td><img src="<?php echo $row["img_url"] ?>" style="background-color: white" align="middle"
+                             height="50"
+                             alt="Card image">
+                        &nbsp;&nbsp;<a
+                                href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
+                                    class="text-black"><?php echo $row['club'] ?></strong></a></td>
+                    <td><?php echo $row['goals'] ?> </td>
+                </tr>
+                <?php
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
 </section>
 <footer>
     <?php include("../footer.php"); ?>

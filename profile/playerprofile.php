@@ -45,8 +45,8 @@
 </head>
 <body>
 <div>
-    <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
-        <a class="navbar-brand d-flex col-sm-4 mr-auto" href="../index.php">FIO team</a>
+    <nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
+        <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="index.php">FIO team</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -55,26 +55,19 @@
             <ul class="nav navbar-nav mr-auto justify-content-end">
                 <li class="col-sm-4"></li>
                 <li class="nav-item col-sm-2">
-                    <a href="../home.php" class="stretched-link text-center" style="color: black">Home</a>
+                    <a href="../home.php" class="stretched-link text-center" style="color: white">Home</a>
                 </li>
                 <li class="nav-item col-sm-2">
-                    <a href="../player.php" class="stretched-link text-center" style="color: black">Player</a>
+                    <a href="../player.php" class="stretched-link text-center" style="color: white">Player</a>
                 </li>
                 <li class="nav-item col-sm-2">
-                    <a href="../clubs.php" class="stretched-link text-center" style="color: black">Clubs</a>
+                    <a href="../clubs.php" class="stretched-link text-center" style="color: white">Clubs</a>
                 </li>
                 <li class="nav-item col-sm-2">
-                    <a href="../competitions.php" class="stretched-link text-center"
-                       style="color: black">Competitions</a>
+                    <a href="../competitions.php" class="stretched-link text-center" style="color: white">Competitions</a>
                 </li>
             </ul>
         </div>
-        <form action="" id="search-box">
-            <input type="text" id="search-text">
-            <button id="search-btn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </form>
     </nav>
 
     <?php
@@ -109,7 +102,12 @@ WHERE p.player_id = $_GET[id]";
                                             <span style="font-size: 30px"><?php echo $row_title['pretty_name'] ?></span>
                                             <br>
                                             <h6 style="color: darkblue; margin-top: 5px">
-                                                <b><?php echo $row_title['sub_position'] ?></b></h6>
+                                                <b><?php
+                                                    if ($row_title['position'] === "Goalkeeper") {
+                                                        echo $row_title['position'];
+                                                    } else {
+                                                        echo $row_title['sub_position'];
+                                                    }?></b></h6>
                                         </b>
                                     </h5>
                                     <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
