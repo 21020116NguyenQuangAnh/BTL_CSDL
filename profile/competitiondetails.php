@@ -10,7 +10,9 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -31,7 +33,12 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/demo4b.css">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style type="text/css">
+        <?php include ('../css/club_profile.css'); ?>
+    </style>
 
     <meta name="theme-color" content="#fafafa">
 
@@ -72,17 +79,192 @@
 
 <?php
 include('../admincp/config/config.php');
-$sql_comp_info = "select * from competitions where competition_id = '$_GET[id]'";
+$sql_comp_info = "select comp.*, ct.flag_url 
+from competitions comp
+join country ct on ct.country_name = comp.country_name
+where comp.competition_id = '$_GET[id]'";
 $query_comp_info = mysqli_query($conn, $sql_comp_info);
 $row_title = mysqli_fetch_array($query_comp_info);
 ?>
 
-<div class="container" style="margin-top:80px">
-    <h1 style="color: royalblue"> <?php echo $row_title['pretty_name'] ?> </h1>
-</div>
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-sm-5">
+                <div class="card card-style1 border-0">
+                    <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <img src="<?php echo $row_title['img_url'] ?>" style="width: 200px; margin-left: 120px"
+                                     alt="Card image">
+                            </div>
+                            <div class="col-lg-6 px-xl-10">
+                                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                    <h3 class="h2 text-white mb-0"
+                                        style="min-width: 280px"><?php echo $row_title['pretty_name'] ?></h3>
+                                    <span class="text-primary">
+                                        <b><?php echo $row_title['country_name'] ?></b>
+                                        <img src="<?php echo $row_title['flag_url'] ?>"
+                                             style="height: 18px; background-color: white; margin-bottom: 5px">
+                                    </span>
+                                </div>
+                                <ul class="list-unstyled mb-1-9">
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                                class="display-26 text-secondary me-2 font-weight-600">Number of teams: </span><b> <?php echo $row_title['number_of_teams'] ?> </b>
+                                    </li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                                class="display-26 text-secondary me-2 font-weight-600">League level: </span><b> <?php echo $row_title['type'] ?> </b>
+                                    </li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                                class="display-26 text-secondary me-2 font-weight-600">Confederation: </span><b> <?php echo $row_title['confederation'] ?> </b>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container site-section">
+            <div class="row">
+                <div class="col-6 title-section">
+                    <h2 class="heading" style="color: darkblue; border-left: 10px solid #b1154a">
+                        &nbsp;&nbsp;League Table </h2>
+                </div>
+                <div class="col-6 text-right">
+                    <div class="custom-nav">
+                        <a href="#" class="js-custom-prev-v2"><span class="icon-keyboard_arrow_left"></span></a>
+                        <span></span>
+                        <a href="#" class="js-custom-next-v2"><span class="icon-keyboard_arrow_right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <?php
+            include('../admincp/config/config.php');
+            ?>
+            <form action="" method="post" style="color: darkblue">
+                <a class="col-sm-2 text-left"><b>Season: </b></a>
+                <input type="text" name="year" value="">
+                <button type="submit" class="text-left">Search</button>
+            </form>
+        </div>
+        <br>
+        <?php
+        $competitions = $row_title['competition_id'];
+        if (isset($_POST["year"])) {
+            $year = $_POST["year"];
+        } else {
+            $year = 2021;
+        }
 
-<div class="container">
-    <div class="card" style="width: 200px">
-        <img class="card-img-top" src="<?php echo $row_title['img_url'] ?>" alt="Card image">
+        $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
+        home.club_id,
+        home.img_url as Logo,
+        home.pretty_name as Clubs,
+        home.home_played + away.away_played as PL,
+        home.home_points + away.away_points as points,
+        home.home_wins + away.away_wins as W,
+        home.home_draws + away.away_draws as D,
+        home.home_loses + away.away_loses as L,
+        home.home_goals + away.away_goals as BT,
+        home.home_conceded_goals + away.away_conceded_goals as BB,
+        home.home_goals + away.away_goals - (home.home_conceded_goals + away.away_conceded_goals) as HS
+        from (select c1.pretty_name, c1.club_id, c1.img_url,
+        sum(if(games.home_club_id is not null,1,0)) home_played,
+        sum(if(games.home_club_goals > games.away_club_goals,3,if(games.home_club_goals = games.away_club_goals,1,0))) home_points,
+        sum(if(games.home_club_goals > games.away_club_goals,1,0)) home_wins,
+        sum(if(games.home_club_goals = games.away_club_goals,1,0)) home_draws,
+        sum(if(games.home_club_goals < games.away_club_goals,1,0)) home_loses,
+        sum(games.home_club_goals) home_goals,
+        sum(games.away_club_goals) home_conceded_goals
+        from games inner join clubs c1 on c1.club_id = games.home_club_id 
+        where games.competition_code = ? and games.season = ? group by c1.club_id) home 
+        inner join (select c2.pretty_name, c2.club_id, c2.img_url,
+        sum(if(games.away_club_id is not null,1,0)) away_played,
+        sum(if(games.home_club_goals < games.away_club_goals,3,if(games.home_club_goals = games.away_club_goals,1,0))) away_points,
+        sum(if(games.home_club_goals < games.away_club_goals,1,0)) away_wins,
+        sum(if(games.home_club_goals = games.away_club_goals,1,0)) away_draws,
+        sum(if(games.home_club_goals > games.away_club_goals,1,0)) away_loses,
+        sum(games.home_club_goals) away_conceded_goals,
+        sum(games.away_club_goals) away_goals
+        from games inner join clubs c2 on c2.club_id = games.away_club_id 
+        where games.competition_code = ? and games.season = ? group by c2.club_id) away 
+        on home.club_id = away.club_id 
+        order by points DESC, HS desc, BT DESC;';
+        $query_bxh = $conn->prepare($sql_bxh);
+        $query_bxh->bind_param("ssss", $competitions, $year, $competitions, $year);
+        $query_bxh->execute();
+        $query_ltb = $query_bxh->get_result();
+
+        $sql_league = 'SELECT pretty_name FROM `competitions` WHERE competition_id = ?;';
+        $query_league = $conn->prepare($sql_league);
+        $query_league->bind_param("s", $competitions);
+        $query_league->execute();
+        $query_name = $query_league->get_result();
+
+        $sql_top = "SELECT * FROM `competitions` WHERE competition_id IN ('CL','GB1','ES1','L1','IT1','FR1');";
+        $query_top = mysqli_query($conn, $sql_top);
+        ?>
+
+        <div class="container">
+            <h4 style="color: black">
+                <?php
+                if ($name = $query_name->fetch_array()) {
+                    echo $name['pretty_name'];
+                } ?>
+                Season <?php echo $year ?>
+            </h4>
+            <div class="widget-next-match">
+                <table class="table custom-table">
+                    <thead>
+                    <tr style="background-color: red; text-align: justify" class="text-white">
+                        <th>STT</th>
+                        <th>Teams</th>
+                        <th>P</th>
+                        <th>W</th>
+                        <th>D</th>
+                        <th>L</th>
+                        <th>BT</th>
+                        <th>BB</th>
+                        <th>HS</th>
+                        <th>PTS</th>
+                    </tr>
+                    </thead>
+                    <tbody style="background-color: white">
+                    <?php
+                    $i = 0;
+                    while ($row = $query_ltb->fetch_array()) {
+                        $i++;
+                        ?>
+                        <tr>
+                            <td><?php echo $i ?> </td>
+                            <td><img src="<?php echo $row["Logo"] ?>" style="background-color: white" align="middle"
+                                     height="25"
+                                     alt="Card image">
+                                &nbsp;&nbsp;<a
+                                        href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
+                                            class="text-black"><?php echo $row['Clubs'] ?></strong></a></td>
+                            <td><?php echo $row['PL'] ?> </td>
+                            <td><?php echo $row['W'] ?> </td>
+                            <td><?php echo $row['D'] ?> </td>
+                            <td><?php echo $row['L'] ?> </td>
+                            <td><?php echo $row['BT'] ?> </td>
+                            <td><?php echo $row['BB'] ?> </td>
+                            <td><?php echo $row['HS'] ?> </td>
+                            <td><?php echo $row['points'] ?> </td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
-</div>
+</section>
+<footer>
+    <?php include("../footer.php"); ?>
+</footer>
+</body>
+</html>

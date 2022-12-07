@@ -33,307 +33,13 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="../css/player_profile.css">
 
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../css/style.css">
     <meta name="theme-color" content="#fafafa">
 
     <style type="text/css">
-        body {
-            margin-top: 20px;
-        }
-
-        .card-style1 {
-            box-shadow: 0px 0px 10px 0px rgb(89 75 128 / 9%);
-        }
-
-        .border-0 {
-            border: 0 !important;
-        }
-
-        .card {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-            word-wrap: break-word;
-            background-color: #fff;
-            background-clip: border-box;
-            border: 1px solid rgba(0, 0, 0, .125);
-            border-radius: 0.25rem;
-        }
-
-        section {
-            padding: 120px 0;
-            overflow: hidden;
-            background: #fff;
-        }
-
-        .mb-2-3, .my-2-3 {
-            margin-bottom: 2.3rem;
-        }
-
-        .section-title {
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .text-primary {
-            color: #ceaa4d !important;
-        }
-
-        .text-secondary {
-            color: #15395A !important;
-        }
-
-        .font-weight-600 {
-            font-weight: 600;
-        }
-
-        .display-26 {
-            font-size: 1.3rem;
-        }
-
-        @media screen and (min-width: 992px) {
-            .p-lg-7 {
-                padding: 4rem;
-            }
-        }
-
-        @media screen and (min-width: 768px) {
-            .p-md-6 {
-                padding: 3.5rem;
-            }
-        }
-
-        @media screen and (min-width: 576px) {
-            .p-sm-2-3 {
-                padding: 2.3rem;
-            }
-        }
-
-        .p-1-9 {
-            padding: 1.9rem;
-        }
-
-        .bg-secondary {
-            background: #15395A !important;
-        }
-
-        @media screen and (min-width: 576px) {
-            .pe-sm-6, .px-sm-6 {
-                padding-right: 3.5rem;
-            }
-        }
-
-        @media screen and (min-width: 576px) {
-            .ps-sm-6, .px-sm-6 {
-                padding-left: 3.5rem;
-            }
-        }
-
-        .pe-1-9, .px-1-9 {
-            padding-right: 1.9rem;
-        }
-
-        .ps-1-9, .px-1-9 {
-            padding-left: 1.9rem;
-        }
-
-        .pb-1-9, .py-1-9 {
-            padding-bottom: 1.9rem;
-        }
-
-        .pt-1-9, .py-1-9 {
-            padding-top: 1.9rem;
-        }
-
-        .mb-1-9, .my-1-9 {
-            margin-bottom: 1.9rem;
-        }
-
-        @media (min-width: 992px) {
-            .d-lg-inline-block {
-                display: inline-block !important;
-            }
-        }
-
-        .rounded {
-            border-radius: 0.25rem !important;
-        }
-
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            font-size: .875rem;
-            font-weight: 400;
-            line-height: 1.4285714286;
-            color: #212529;
-            text-align: left;
-            background-color: #f9f9fa
-        }
-
-
-        #page-content {
-
-            margin-top: 100px;
-        }
-
-
-        a {
-            color: #448bff;
-            text-decoration: none;
-            background-color: transparent
-        }
-
-        a:hover {
-            color: #005ef7;
-            text-decoration: underline
-        }
-
-        a:not([href]):not([tabindex]) {
-            color: inherit;
-            text-decoration: none
-        }
-
-        a:not([href]):not([tabindex]):focus,
-        a:not([href]):not([tabindex]):hover {
-            color: inherit;
-            text-decoration: none
-        }
-
-        a:not([href]):not([tabindex]):focus {
-            outline: 0
-        }
-
-        @media (min-width: 576px) {
-            .col-sm-2 {
-                flex: 0 0 16.6666666667%;
-                max-width: 16.6666666667%
-            }
-
-            .col-sm-4 {
-                flex: 0 0 33.3333333333%;
-                max-width: 33.3333333333%
-            }
-
-            .col-sm-6 {
-                flex: 0 0 50%;
-                max-width: 50%
-            }
-        }
-
-
-        .text-muted {
-            color: #99a0ac !important
-        }
-
-        .block,
-        .card {
-            background: #fff;
-            border-width: 0;
-            border-radius: .25rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
-            margin-bottom: 1.5rem
-        }
-
-        .avatar {
-            position: relative;
-            line-height: 1;
-            border-radius: 500px;
-            white-space: nowrap;
-            font-weight: 700;
-            border-radius: 100%;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -ms-flex-negative: 0;
-            flex-shrink: 0;
-            border-radius: 500px;
-            box-shadow: 0 5px 10px 0 rgba(50, 50, 50, .15)
-        }
-
-        .avatar img {
-            border-radius: inherit;
-            width: 100%
-        }
-
-        .gd-primary {
-            color: #fff;
-            border: none;
-            background: #448bff linear-gradient(45deg, #448bff, #44e9ff)
-        }
-
-        @media (min-width: 992px) {
-            .page-container {
-                max-width: 1140px;
-                margin: 0 auto
-            }
-        }
-
-
-        .list {
-            padding-left: 0;
-            padding-right: 0
-        }
-
-        .list-item {
-            position: relative;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            min-width: 0;
-            word-wrap: break-word
-        }
-
-
-        .list-row .list-item {
-            -ms-flex-direction: row;
-            flex-direction: row;
-            -ms-flex-align: center;
-            align-items: center;
-            padding: .75rem .625rem
-        }
-
-        .list-row .list-item > * {
-            padding-left: .625rem;
-            padding-right: .625rem
-        }
-
-        .text-color {
-            color: #5e676f
-        }
-
-        .text-sm {
-            font-size: .825rem
-        }
-
-        .h-1x {
-            height: 1.25rem;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical
-        }
-
-
-        .w-48 {
-            width: 48px !important;
-            height: 48px !important
-        }
-
-
-        a:link {
-
-            text-decoration: none;
-        }
+        <?php include ('../css/club_profile.css'); ?>
     </style>
 
 </head>
@@ -373,7 +79,7 @@
 
 <?php
 include('../admincp/config/config.php');
-$sql_club_info = "select clubs.*, comp.pretty_name as league_name, comp.country_name, comp.img_url as league_url , s.stadium_seats, country.flag_url
+$sql_club_info = "select clubs.*, comp.competition_id, comp.pretty_name as league_name, comp.country_name, comp.img_url as league_url , s.stadium_seats, country.flag_url
 from clubs join competitions as comp on clubs.`domestic_competition_id` = comp.competition_id
 join stadiums as s on clubs.stadium_name = s.stadium_name
 join country on comp.country_name = country.country_name
@@ -408,7 +114,7 @@ $row_title = mysqli_fetch_array($query_club_info);
                                             League:
                                         </span>
                                         <b style="font-size: 25px">
-                                            <?php echo $row_title['league_name'] ?>
+                                            <a href="competitiondetails.php?value=comp&id=<?php echo $row_title['competition_id'] ?>" style="color: darkblue"><?php echo $row_title['league_name'] ?></a>
                                             <img src="<?php echo $row_title['league_url'] ?>"
                                                  style="height: 45px">
                                         </b>
@@ -525,3 +231,8 @@ $row_title = mysqli_fetch_array($query_club_info);
         </div>
     </div>
 </section>
+<footer>
+    <?php include("../footer.php"); ?>
+</footer>
+</body>
+</html>

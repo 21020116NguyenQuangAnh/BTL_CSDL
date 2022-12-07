@@ -33,7 +33,6 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/demo4b.css">
 
     <meta name="theme-color" content="#fafafa">
 
