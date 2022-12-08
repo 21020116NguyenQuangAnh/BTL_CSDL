@@ -116,11 +116,6 @@ $row_title = mysqli_fetch_array($query_comp_info);
             </div>
         </div>
         <div class="container">
-        <form action="" method="post" style="color: darkblue">
-            <a class="col-sm-2 text-left" style="margin-left: 26px; font-size: 25px"><b>Season:</b></a>
-            <input type="text" name="year" value="">
-            <button type="submit" class="text-left">Search</button>
-        </form>
             <?php
             $competitions = $row_title['competition_id'];
             if (isset($_POST["year"])) {
@@ -130,13 +125,19 @@ $row_title = mysqli_fetch_array($query_comp_info);
             }
             ?>
         </div>
-        <br>
+
         <?php
         if ($row_title['type'] === "first_tier") {
         ?>
         <div class="container site-section">
             <div class="row">
                 <div class="col-6 title-section">
+                    <form action="" method="post" style="color: darkblue">
+                        <a class="col-sm-2 text-left" style="font-size: 15px"><b>Season:</b></a>
+                        <input type="text" name="year" value="">
+                        <button type="submit" class="text-left">Search</button>
+                    </form>
+                    <br>
                     <h2 class="heading" style="color: darkblue; border-left: 10px solid #b1154a">
                         &nbsp;&nbsp;League Table </h2>
                 </div>
@@ -148,7 +149,10 @@ $row_title = mysqli_fetch_array($query_comp_info);
                     </div>
                 </div>
             </div>
-
+            <?php
+            include('../admincp/config/config.php');
+            ?>
+        </div>
         <?php
         $sql_bxh = 'select row_number() over (order by points desc, HS desc, BT desc) as STT,
         home.club_id,
