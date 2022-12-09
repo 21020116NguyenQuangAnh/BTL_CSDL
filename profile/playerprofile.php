@@ -44,7 +44,7 @@
 
 </head>
 <body>
-<div>
+<main style="padding-right: 10vw; padding-left: 10vw">
     <nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
         <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="index.php">FIO team</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
@@ -64,7 +64,8 @@
                     <a href="../clubs.php" class="stretched-link text-center" style="color: white">Clubs</a>
                 </li>
                 <li class="nav-item col-sm-2">
-                    <a href="../competitions.php" class="stretched-link text-center" style="color: white">Competitions</a>
+                    <a href="../competitions.php" class="stretched-link text-center"
+                       style="color: white">Competitions</a>
                 </li>
             </ul>
         </div>
@@ -84,88 +85,87 @@ WHERE p.player_id = $_GET[id]";
     $query_player_info = mysqli_query($conn, $sql_player_info);
     $row_title = mysqli_fetch_array($query_player_info);
     ?>
-    <div class="page-content page-container" id="page-content" style="margin-right: 825px; margin-top: 30px">
-        <div class="padding">
-            <div class="row container d-flex justify-content-center">
-                <div class="col-xl-6 col-md-12">
-
-                    <div class="card user-card-full" style="width: 1100px">
-                        <div class="row m-l-0 m-r-0" style="width: 900px">
-                            <div class="col-sm-4 bg-c-lite-green user-profile">
-                                <div class="card-block text-center text-white">
-                                    <div class="m-b-25">
-                                        <img src="<?php echo $row_title['image_url'] ?>" class="img-radius"
-                                             alt="User-Profile-Image">
-                                    </div>
-                                    <h5 class="f-w-600">
-                                        <b>
-                                            <span style="font-size: 30px"><?php echo $row_title['pretty_name'] ?></span>
-                                            <br>
-                                            <h6 style="color: darkblue; margin-top: 5px">
-                                                <b><?php
-                                                    if ($row_title['position'] === "Goalkeeper") {
-                                                        echo $row_title['position'];
-                                                    } else {
-                                                        echo $row_title['sub_position'];
-                                                    }?></b></h6>
-                                        </b>
-                                    </h5>
-                                    <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+    <div class="page-content page-container" id="page-content" style="margin-top: 90px">
+        <h5 class="section-title text-primary mb-3 mb-sm-4">PROFILE</h5>
+        <div class="row container d-flex">
+            <div class="col-xl-6 col-md-12">
+                <div class="card user-card-full" >
+                    <div class="row m-l-0 m-r-0" >
+                        <div class="col-sm-4 bg-c-lite-green" style="padding-top: 6vh">
+                            <div class="text-center text-white" >
+                                <div class="m-b-20">
+                                    <img src="<?php echo $row_title['image_url'] ?>" class="img-radius"
+                                         alt="User-Profile-Image" style="max-width: 20vw">
                                 </div>
+                                <h5 class="f-w-600">
+                                    <b>
+                                        <span><?php echo $row_title['pretty_name'] ?></span>
+                                        <br>
+                                        <h6 style="padding-top: 5px; color: darkblue">
+                                            <b><?php
+                                                if ($row_title['position'] === "Goalkeeper") {
+                                                    echo $row_title['position'];
+                                                } else {
+                                                    echo $row_title['sub_position'];
+                                                } ?>
+                                            </b>
+                                        </h6>
+                                    </b>
+                                </h5>
+                                <i class="mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                             </div>
-                            <div class="col-sm-8">
-                                <div class="card-block">
-                                    <div class="row" style="margin-left: 60px">
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Date of birth</p>
-                                            <h6 class="text-muted f-w-600"><?php echo $row_title['date_of_birth'] . ' (' . $row_title['age'] . ')' ?></h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Height</p>
-                                            <h6 class="text-muted f-w-600"><?php echo ($row_title['height_in_cm'] / 100) . ' m' ?></h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Citizenship</p>
-                                            <h6 class="text-muted f-w-600">
-                                                <?php echo $row_title['country_of_citizenship'] . ' ' ?>
-                                                <img src="<?php echo $row_title['citizen_flag'] ?>" alt="No image"
-                                                     style="height: 20px">
-                                            </h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Country of birth</p>
-                                            <h6 class="text-muted f-w-600">
-                                                <?php echo $row_title['country_of_birth'] . ' ' ?>
-                                                <img src="<?php echo $row_title['birth_flag'] ?>" alt="No image"
-                                                     style="height: 20px">
-                                            </h6>
-                                        </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Date of birth</p>
+                                        <h6 class="text-muted f-w-600"><?php echo $row_title['date_of_birth'] . ' (' . $row_title['age'] . ')' ?></h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Height</p>
+                                        <h6 class="text-muted f-w-600"><?php echo ($row_title['height_in_cm'] / 100) . ' m' ?></h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Citizenship</p>
+                                        <h6 class="text-muted f-w-600">
+                                            <?php echo $row_title['country_of_citizenship'] . ' ' ?>
+                                            <img src="<?php echo $row_title['citizen_flag'] ?>" alt="No image"
+                                                 style="max-height: 20px">
+                                        </h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Country of birth</p>
+                                        <h6 class="text-muted f-w-600">
+                                            <?php echo $row_title['country_of_birth'] . ' ' ?>
+                                            <img src="<?php echo $row_title['birth_flag'] ?>" alt="No image"
+                                                 style="max-height: 20px">
+                                        </h6>
+                                    </div>
 
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Curent club</p>
-                                            <h5 class="f-w-600">
-                                                <b>
-                                                    <img src="<?php echo $row_title['logo'] ?>" height="30px"
-                                                         style="margin-bottom: 2px">
-                                                    <a href="clubprofile.php?value=club&id=<?php echo $row_title['current_club_id'] ?>"
-                                                       style="color: darkblue; font-size: 16px">
-                                                        <?php echo $row_title['club'] ?>
-                                                    </a>
-                                                </b>
-                                            </h5>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Market value</p>
-                                            <h6 class="text-muted f-w-600"><?php echo '€' . number_format($row_title['market_value_in_gbp'] / 1000000, 2) . 'm' ?></h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Dominant foot</p>
-                                            <h6 class="text-muted f-w-600"><?php echo $row_title['foot'] ?></h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Lastest season</p>
-                                            <h6 class="text-muted f-w-600"><?php echo $row_title['last_season'] ?></h6>
-                                        </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Curent club</p>
+                                        <h5 class="f-w-600">
+                                            <b>
+                                                <img src="<?php echo $row_title['logo'] ?>" style="max-height: 20px">
+                                                <a href="clubprofile.php?value=club&id=<?php echo $row_title['current_club_id'] ?>"
+                                                   style="font-size: 2vh; color: darkblue">
+                                                    <?php echo $row_title['club'] ?>
+                                                </a>
+                                            </b>
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Market value</p>
+                                        <h6 class="text-muted f-w-600"><?php echo '€' . number_format($row_title['market_value_in_gbp'] / 1000000, 2) . 'm' ?></h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Dominant foot</p>
+                                        <h6 class="text-muted f-w-600"><?php echo $row_title['foot'] ?></h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Lastest season</p>
+                                        <h6 class="text-muted f-w-600"><?php echo $row_title['last_season'] ?></h6>
                                     </div>
                                 </div>
                             </div>
@@ -175,9 +175,9 @@ WHERE p.player_id = $_GET[id]";
             </div>
         </div>
     </div>
-    <h5 class="section-title text-primary mb-3 mb-sm-4" style="margin-left: 205px">Club career</h5>
-    <?php
-    $sql_career = "SELECT games.season AS season, players.pretty_name AS player_name, 
+
+<?php
+$sql_career = "SELECT games.season AS season, players.pretty_name AS player_name, 
        clubs.img_url as Logo, clubs.club_id, clubs.pretty_name AS club_name
 FROM `appearances` 
 inner join players on players.player_id = appearances.player_id
@@ -186,39 +186,41 @@ inner join clubs on clubs.club_id = appearances.player_club_id
 where players.player_id = $_GET[id]
 GROUP BY players.pretty_name, clubs.pretty_name, games.season
 ORDER BY games.date;";
-    $query_career = mysqli_query($conn, $sql_career);
-    ?>
-    <div class="container"
-    <h4>
-        <div class="widget-next-match">
-            <table class="table custom-table">
-                <thead>
-                <tr style="background-color: red; text-align: justify" class="text-white">
-                    <th>Season</th>
-                    <th>Club Name</th>
-                </tr>
-                </thead>
-                <tbody style="background-color: white">
-                <?php
-                while ($row = $query_career->fetch_array()) {
-                    ?>
-                    <tr>
-                        <td><?php echo $row['season'] ?> </td>
-                        <td><img src="<?php echo $row["Logo"] ?>" style="background-color: white" align="middle"
-                                 height="25"
-                                 alt="Card image">
-                            &nbsp;&nbsp;<a
-                                    href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
-                                        class="text-black"><?php echo $row['club_name'] ?></strong></a></td>
-                    </tr>
-                    <?php
-                }
+$query_career = mysqli_query($conn, $sql_career);
+?>
+
+<h5 class="section-title text-primary mb-3 mb-sm-4">Club career</h5>
+<h4>
+    <div class="widget-next-match">
+        <table class="table custom-table">
+            <thead>
+            <tr style="background-color: red; text-align: justify; font-size: 2.5vh" class="text-white">
+                <th>SEASON</th>
+                <th>CLUB NAME</th>
+            </tr>
+            </thead>
+            <tbody style="background-color: white">
+            <?php
+            while ($row = $query_career->fetch_array()) {
                 ?>
-                </tbody>
-            </table>
-        </div>
-    </h4>
-</div>
+                <tr>
+                    <td style="font-size: 2.5vh"><?php echo $row['season'] ?> </td>
+                    <td><img src="<?php echo $row["Logo"] ?>" style="background-color: white" align="middle"
+                             height="25"
+                             alt="Card image">
+                        &nbsp;&nbsp;<a
+                                href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"
+                                style="font-size: 2.5vh"><strong
+                                    class="text-black"><?php echo $row['club_name'] ?></strong></a></td>
+                </tr>
+                <?php
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
+</h4>
+</main>
 </body>
 <footer>
     <?php include('../footer.php'); ?>

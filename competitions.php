@@ -190,7 +190,7 @@ if ($row = $comp->fetch_array()) {
     </div>
     <?php
     include('admincp/config/config.php');
-    $test = 'SELECT * FROM `competitions` WHERE `type` = "first_tier"';
+    $test = 'SELECT * FROM `competitions` WHERE `type` = "first_tier" and competition_id != "A1"';
     $test_list = mysqli_query($conn, $test);
     ?>
     <form action="" method="post" style="color: white">

@@ -43,16 +43,11 @@
         }
 
         .test {
-            width:1110px;
-            height:350px;
+            min-width:1110px;
+            height:fit-content;
             overflow-x:auto;
             overflow-y:hidden;
-        }
-        .newtest {
-            width: 1500px;
-            height: fit-content;
-            overflow-x: hidden;
-            overflow-y: hidden;
+            font-size: 5vh;
         }
         h2 {
             color: white;
@@ -121,8 +116,8 @@
         $comp = $comp_id->get_result();
         ?>
     </nav>
-    <div class="container-fluid" style="margin-left: 0px">
-        <div id="pic" class="carousel slide newtest" data-ride="carousel">
+    <div class="container-fluid">
+        <div id="pic" class="carousel slide" data-ride="carousel">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -134,7 +129,7 @@
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="images/player.jpg" alt="Player" style="width: 1510px; height: fit-content;">
+                    <img src="images/player.jpg" alt="Player" style="width: 100vw">
                     <div class="carousel-caption">
                         <a href="player.php" style="color: white">
                             <h1>Amazing players</h1>
@@ -142,7 +137,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="images/comp.jpg" alt="Competition" style="width: 1510px; height: fit-content">
+                    <img src="images/comp.jpg" alt="Competition" style="width: 100vw">
                     <div class="carousel-caption">
                         <a href="competitions.php" style="color: white">
                             <h1>Exciting competitions</h1>
@@ -150,7 +145,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="images/chelsea.jpg" alt="Club" style="width: 1510px; height: fit-content">
+                    <img src="images/chelsea.jpg" alt="Club" style="width: 100vw">
                     <div class="carousel-caption">
                         <a href="clubs.php" style="color: white">
                             <h1>Famous clubs</h1>
@@ -183,7 +178,7 @@
                             <div class="caption-inner">
                                 <div class="author d-flex align-items-center">
                                     <div class="img mb-2 mr-3">
-                                        <img src="images/epl.jpg" alt="" width="1110px">
+                                        <img src="images/epl.jpg" alt="" style="max-width: 1110px">
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +207,7 @@
             <?php
             while ($row = $player->fetch_array()) {
                 ?>
-                <div class="card" style="width: 159px">
+                <div class="card" style="min-width: 10vw; max-with: 60vw">
                     <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                     <div class="card-body">
                         <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
@@ -478,6 +473,7 @@
     $query_club = mysqli_query($conn, $sql_club);
     ?>
 
+    <br>
     <div class="container">
         <h2>&nbsp;&nbsp;Most valuable clubs</h2>
         <div id="demo2" class="carousel slide test" data-ride="carousel">

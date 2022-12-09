@@ -119,7 +119,7 @@
                         <div class="caption-inner">
                             <div class="author d-flex align-items-center">
                                 <div class="img mb-2 mr-3">
-                                    <img src="images/player.jpg" alt="" width="1110px">
+                                    <img src="images/player.jpg" alt="" width = "1110px">
                                 </div>
                             </div>
                         </div>

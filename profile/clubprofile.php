@@ -45,8 +45,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
-    <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="../index.php">FIO team</a>
+<nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center fixed-top">
+    <a class="navbar-brand d-flex col-sm-4 mr-auto" href="../index.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -55,19 +55,26 @@
         <ul class="nav navbar-nav mr-auto justify-content-end">
             <li class="col-sm-4"></li>
             <li class="nav-item col-sm-2">
-                <a href="../home.php" class="stretched-link text-center" style="color: white">Home</a>
+                <a href="../home.php" class="stretched-link text-center" style="color: black">Home</a>
             </li>
             <li class="nav-item col-sm-2">
-                <a href="../player.php" class="stretched-link text-center" style="color: white">Player</a>
+                <a href="../player.php" class="stretched-link text-center" style="color: black">Player</a>
             </li>
             <li class="nav-item col-sm-2">
-                <a href="../clubs.php" class="stretched-link text-center" style="color: white">Clubs</a>
+                <a href="../clubs.php" class="stretched-link text-center" style="color: black">Clubs</a>
             </li>
             <li class="nav-item col-sm-2">
-                <a href="../competitions.php" class="stretched-link text-center" style="color: white">Competitions</a>
+                <a href="../competitions.php" class="stretched-link text-center" style="color: black">Competitions</a>
+
             </li>
         </ul>
     </div>
+    <form action="" id="search-box">
+        <input type="text" id="search-text">
+        <button id="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form>
 </nav>
 
 <?php
@@ -153,7 +160,7 @@ $row_title = mysqli_fetch_array($query_club_info);
                             <span class="section-title text-primary mb-3 mb-sm-4">Percentage</span>
                             <div class="progress-text">
                                 <div class="row">
-                                    <div class="col-6">National team players</div>
+                                    <div class="col-6">Foreigners</div>
                                     <div class="col-6 text-end"><?php echo (number_format($row_title['foreigners_number'] / $row_title['squad_size'] * 100, 1)) . '%' ?></div>
                                 </div>
                             </div>
@@ -164,7 +171,7 @@ $row_title = mysqli_fetch_array($query_club_info);
                             </div>
                             <div class="progress-text">
                                 <div class="row">
-                                    <div class="col-6">Foreigners</div>
+                                    <div class="col-6">National team players</div>
                                     <div class="col-6 text-end"><?php echo (number_format($row_title['national_team_players'] / $row_title['squad_size'] * 100, 1)) . '%' ?></div>
                                 </div>
                             </div>
@@ -194,7 +201,7 @@ $row_title = mysqli_fetch_array($query_club_info);
                             <div class="padding">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="list list-row block" style="width: 800px">
+                                        <div class="list list-row block" style="width: 800px; font-size: 17px;">
                                             <div class="list-item" data-id="7">
                                                 <div>
                                                     <a href="playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
@@ -205,14 +212,8 @@ $row_title = mysqli_fetch_array($query_club_info);
                                                 <div class="flex">
                                                     <a href="playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
                                                        class="item-author text-color"
-                                                       data-abc="true"><b><?php echo $row['pretty_name'] ?></b></a>
-                                                    <div class="item-except text-muted text-sm h-1x">
-                                                        <?php
-                                                        if ($row['position'] === "Goalkeeper") {
-                                                            echo $row['position'];
-                                                        } else {
-                                                            echo $row['sub_position'];
-                                                        }?>
+                                                       data-abc="true" style="color: darkblue"><b><?php echo $row['pretty_name'] ?></b></a>
+                                                    <div style="color: black; font-size: 13px"><?php echo $row['sub_position'] ?>
                                                     </div>
                                                 </div>
 

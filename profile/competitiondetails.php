@@ -38,6 +38,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <style type="text/css">
         <?php include ('../css/club_profile.css'); ?>
+        h2 {
+            font-size: 27px;
+        }
     </style>
 
     <meta name="theme-color" content="#fafafa">
@@ -115,6 +118,11 @@ $row_title = mysqli_fetch_array($query_comp_info);
                 </div>
             </div>
         </div>
+        <form action="" method="post" style="color: darkblue">
+            <a class="col-sm-2 text-left" style="font-size: 1.7vw"><b>&nbsp;Season:</b></a>
+            <input type="text" name="year" value="">
+            <button type="submit" class="text-left">Search</button>
+        </form>
         <div class="container">
             <?php
             $competitions = $row_title['competition_id'];
@@ -132,11 +140,6 @@ $row_title = mysqli_fetch_array($query_comp_info);
         <div class="container site-section">
             <div class="row">
                 <div class="col-6 title-section">
-                    <form action="" method="post" style="color: darkblue">
-                        <a class="col-sm-2 text-left" style="font-size: 15px"><b>Season:</b></a>
-                        <input type="text" name="year" value="">
-                        <button type="submit" class="text-left">Search</button>
-                    </form>
                     <br>
                     <h2 class="heading" style="color: darkblue; border-left: 10px solid #b1154a">
                         &nbsp;&nbsp;League Table </h2>
@@ -204,13 +207,13 @@ $row_title = mysqli_fetch_array($query_comp_info);
         ?>
 
         <div class="container">
-            <h4 style="color: black">
+            <h5 style="color: black">
                 <?php
                 if ($name = $query_name->fetch_array()) {
                     echo $name['pretty_name'];
                 } ?>
                 Season <?php echo $year ?>
-            </h4>
+            </h5>
             <div class="widget-next-match">
                 <table class="table custom-table">
                     <thead>
@@ -227,7 +230,7 @@ $row_title = mysqli_fetch_array($query_comp_info);
                         <th>PTS</th>
                     </tr>
                     </thead>
-                    <tbody style="background-color: white">
+                    <tbody style="background-color: white; font-size: 1vw">
                     <?php
                     $i = 0;
                     while ($row = $query_ltb->fetch_array()) {
@@ -279,7 +282,7 @@ limit 20';
         <div class="row">
             <div class="col-6 title-section">
                 <h2 class="heading" style="color: darkblue; border-left: 10px solid #b1154a">
-                    &nbsp;&nbsp;Best Goal Scorers </h2>
+                    &nbsp;&nbsp;Best Goal Scores </h2>
             </div>
             <div class="col-6 text-right">
                 <div class="custom-nav">
