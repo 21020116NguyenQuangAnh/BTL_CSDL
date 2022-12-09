@@ -57,7 +57,7 @@
 
 </head>
 <main>
-    <nav class="navbar navbar-expand-md navbar-light justify-content-center sticky-top" style="background-color: blue">
+    <nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
         <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="index.php">FIO team</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
             <span class="navbar-toggler-icon"></span>
@@ -207,7 +207,7 @@
             <?php
             while ($row = $player->fetch_array()) {
                 ?>
-                <div class="card" style="min-width: 10vw; max-with: 60vw">
+                <div class="card" style="width: 159px">
                     <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
                     <div class="card-body">
                         <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
