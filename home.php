@@ -193,7 +193,7 @@
     ?>
     <div class="container" style="color: black">
         <h2>
-            <a href="player.php">Players</a>
+            <a href="player.php" style="color: white">Players</a>
         </h2>
         <div class="row" style="margin-left: 0">
             <div class="card" style="width: 159px">
@@ -227,7 +227,7 @@
     ?>
     <div class="container" style="color: black">
         <h2>
-            <a href="clubs.php">Clubs</a>
+            <a href="clubs.php" style="color: white">Clubs</a>
         </h2>
         <div class="row" style="margin-left: 0">
             <div class="card" style="width: 159px">
@@ -261,7 +261,7 @@
     ?>
     <div class="container" style="color: black">
         <h2>
-            <a href="competitions.php">Competitions</a>
+            <a href="competitions.php" style="color: white">Competitions</a>
         </h2>
         <div class="row" style="margin-left: 0">
             <div class="card" style="width: 159px">

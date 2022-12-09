@@ -46,7 +46,7 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
-    <a class="navbar-brand d-flex col-sm-4 mr-auto" href="../index.php">FIO team</a>
+    <a class="navbar-brand d-flex col-sm-4 mr-auto" href="../index.php" style="color: white">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -213,7 +213,12 @@ $row_title = mysqli_fetch_array($query_club_info);
                                                     <a href="playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
                                                        class="item-author text-color"
                                                        data-abc="true" style="color: darkblue"><b><?php echo $row['pretty_name'] ?></b></a>
-                                                    <div style="color: black; font-size: 13px"><?php echo $row['sub_position'] ?>
+                                                    <div style="color: black; font-size: 13px"><?php
+                                                        if ($row['position'] === "Goalkeeper") {
+                                                            echo $row['position'];
+                                                        } else {
+                                                            echo $row['sub_position'];
+                                                        } ?>
                                                     </div>
                                                 </div>
 
