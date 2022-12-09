@@ -69,12 +69,6 @@
             </li>
         </ul>
     </div>
-    <form action="" id="search-box">
-        <input type="text" id="search-text">
-        <button id="search-btn">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-    </form>
 </nav>
 
 <?php
