@@ -85,7 +85,7 @@ WHERE p.player_id = $_GET[id]";
     $query_player_info = mysqli_query($conn, $sql_player_info);
     $row_title = mysqli_fetch_array($query_player_info);
     ?>
-    <div class="page-content page-container" id="page-content" style="margin-top: 90px">
+    <div class="page-content page-container" id="page-content" style="margin-top: 6.5rem">
         <h5 class="section-title text-primary mb-3 mb-sm-4">PROFILE</h5>
         <div class="row container d-flex">
             <div class="col-xl-6 col-md-12">
