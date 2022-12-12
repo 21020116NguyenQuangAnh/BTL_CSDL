@@ -92,7 +92,7 @@ WHERE p.player_id = $_GET[id]";
                 <div class="card user-card-full" >
                     <div class="row m-l-0 m-r-0" >
                         <div class="col-sm-4 bg-c-lite-green" style="padding-top: 6vh">
-                            <div class="text-center text-white" >
+                            <div class="text-center text-white">
                                 <div class="m-b-20">
                                     <img src="<?php echo $row_title['image_url'] ?>" class="img-radius"
                                          alt="User-Profile-Image" style="max-width: 20vw">
