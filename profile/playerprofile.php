@@ -45,7 +45,7 @@
 </head>
 <body>
 <main style="padding-right: 10vw; padding-left: 10vw">
-    <nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
+    <nav class="navbar navbar-expand-md navbar-dark justify-content-center fixed-top" style="background-color: blue">
         <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="../index.php">FIO team</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
             <span class="navbar-toggler-icon"></span>
@@ -178,7 +178,9 @@ WHERE p.player_id = $_GET[id]";
 
 <?php
 $sql_career = "SELECT games.season AS season, players.pretty_name AS player_name, 
-       clubs.img_url as Logo, clubs.club_id, clubs.pretty_name AS club_name
+       clubs.img_url as Logo, clubs.club_id, clubs.pretty_name AS club_name,
+       sum(appearances.goals) AS Goals, sum(appearances.assists) AS Assists,
+       count(appearances.appearance_id) AS Played
 FROM `appearances` 
 inner join players on players.player_id = appearances.player_id
 inner join games on games.game_id = appearances.game_id
@@ -197,6 +199,9 @@ $query_career = mysqli_query($conn, $sql_career);
             <tr style="background-color: red; text-align: justify; font-size: 2.5vh" class="text-white">
                 <th>SEASON</th>
                 <th>CLUB NAME</th>
+                <th>APPEARANCES</th>
+                <th>GOALS</th>
+                <th>ASSISTS</th>
             </tr>
             </thead>
             <tbody style="background-color: white">
@@ -212,6 +217,9 @@ $query_career = mysqli_query($conn, $sql_career);
                                 href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"
                                 style="font-size: 2.5vh"><strong
                                     class="text-black"><?php echo $row['club_name'] ?></strong></a></td>
+                    <td style="font-size: 2.5vh"><?php echo $row['Played'] ?></td>
+                    <td style="font-size: 2.5vh"><?php echo $row['Goals'] ?></td>
+                    <td style="font-size: 2.5vh"><?php echo $row['Assists'] ?></td>
                 </tr>
                 <?php
             }

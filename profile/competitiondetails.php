@@ -48,7 +48,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light justify-content-center fixed-top" style="background-color: blue">
+<nav class="navbar navbar-expand-md navbar-dark justify-content-center fixed-top" style="background-color: blue">
     <a class="navbar-brand d-flex col-sm-4 mr-auto" style="color: white" href="../index.php">FIO team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
