@@ -39,14 +39,8 @@
     <style type="text/css">
         body {
             background-image: url("https://i.pinimg.com/originals/47/6f/29/476f29ab268611e99ed45d2196390f75.png");
-            background-repeat: repeat-y;
+            background-repeat: repeat;
             background-color: blue;
-        }
-        .test {
-            width:1110px;
-            height:350px;
-            overflow-x:auto;
-            overflow-y:hidden;
         }
         h2 {
             color: white;
@@ -110,21 +104,7 @@
         <div class="row">
             <div class="col-12 title-section">
                 <h2 class="heading" style="color: white; border-left: 10px solid #b1154a; background-color: darkblue"> &nbsp;&nbsp;PLAYER </h2>
-            </div>
-        </div>
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <div class="post-entry">
-                    <div class="caption">
-                        <div class="caption-inner">
-                            <div class="author d-flex align-items-center">
-                                <div class="img mb-2 mr-3">
-                                    <img src="images/player.jpg" alt="" width = "1110px">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <img class ="img-fluid" src="images/player.jpg" alt="">
             </div>
         </div>
     </div>
@@ -180,20 +160,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card" style="background-color: gold">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -201,19 +184,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card" style="background-color: silver">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -221,18 +207,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card" style="background-color: saddlebrown">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -270,20 +259,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -291,19 +283,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -311,18 +306,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -360,20 +358,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -381,19 +382,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -401,18 +405,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -450,20 +457,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -471,19 +481,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -491,18 +504,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -540,20 +556,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -561,19 +580,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -581,18 +603,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -600,7 +625,6 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
             </div>
-
             <!-- Left and right controls -->
             <a class="carousel-control-prev" style="width: 5%" href="#rb" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
@@ -630,20 +654,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -651,19 +678,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -671,18 +701,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -720,20 +753,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -741,19 +777,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -761,18 +800,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -810,20 +852,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -831,19 +876,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -851,18 +899,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -900,20 +951,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -921,19 +975,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -941,18 +998,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -990,20 +1050,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1011,19 +1074,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1031,18 +1097,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1082,20 +1151,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1103,19 +1175,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1123,18 +1198,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1174,20 +1252,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1195,19 +1276,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1215,18 +1299,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1264,20 +1351,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1285,19 +1375,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1305,18 +1398,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1353,20 +1449,23 @@ if ($row = $player->fetch_array()) {
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $i = 0;
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: gold; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1374,19 +1473,22 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         $j = $i;
                         while ($i < $j + 6 and $row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: silver; color: black; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }
@@ -1394,18 +1496,21 @@ if ($row = $player->fetch_array()) {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="card-deck">
+                    <div class="row" style="margin: auto">
                         <?php
                         while ($row = mysqli_fetch_array($query_player)) {
                             $i++;
                             ?>
-                            <div class="card">
-                                <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
-                                <div class="card-body">
-                                    <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                            <div class="column" style="padding: 20px; margin-left: -15px">
+                                <div class="card"
+                                     style="background-color: chocolate; color: white; width: 159px; height: 350px">
+                                    <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
+                                    </div>
+                                    <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
+                                       class="btn btn-primary stretched-link">See Profile</a>
                                 </div>
-                                <a href="profile/playerprofile.php?value=player&id=<?php echo $row['player_id'] ?>"
-                                   class="btn btn-primary stretched-link">See Profile</a>
                             </div>
                             <?php
                         }

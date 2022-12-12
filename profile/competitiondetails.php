@@ -214,7 +214,7 @@ $row_title = mysqli_fetch_array($query_comp_info);
                 } ?>
                 Season <?php echo $year ?>
             </h5>
-            <div class="widget-next-match">
+            <div class="table-responsive">
                 <table class="table custom-table">
                     <thead>
                     <tr style="background-color: red; text-align: justify" class="text-white">
@@ -295,7 +295,7 @@ limit 20';
     </div>
 
     <div class="container">
-        <div class="widget-next-match">
+        <div class="table-responsive">
             <table class="table custom-table">
                 <thead>
                 <tr style="background-color: red; text-align: justify" class="text-white">
@@ -309,34 +309,32 @@ limit 20';
                 <?php
                 $i = 0;
                 while ($row = $scorer->fetch_array()) {
-                $i++;
-                ?>
-                <tr>
-                    <td><?php echo $i ?> </td>
-                    <td><img src="<?php echo $row["image_url"] ?>" style="background-color: white" align="middle"
-                             height="50"
-                             alt="Card image">
-                        &nbsp;&nbsp;<a
-                                href="playerprofile.php?value=player&id=<?php echo $row["player_id"] ?>"><strong
-                                    class="text-black"><?php echo $row['pretty_name'] ?></strong></a></td></td>
-                    <td><img src="<?php echo $row["img_url"] ?>" style="background-color: white" align="middle"
-                             height="50"
-                             alt="Card image">
-                        &nbsp;&nbsp;<a
-                                href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
-                                    class="text-black"><?php echo $row['club'] ?></strong></a></td>
-                    <td><?php echo $row['goals'] ?> </td>
-                </tr>
-                <?php
+                    $i++;
+                    ?>
+                    <tr>
+                        <td><?php echo $i ?> </td>
+                        <td><img src="<?php echo $row["image_url"] ?>" style="background-color: white" align="middle"
+                                 height="50"
+                                 alt="Card image">
+                            &nbsp;&nbsp;<a
+                                    href="playerprofile.php?value=player&id=<?php echo $row["player_id"] ?>"><strong
+                                        class="text-black"><?php echo $row['pretty_name'] ?></strong></a></td>
+                        </td>
+                        <td><img src="<?php echo $row["img_url"] ?>" style="background-color: white" align="middle"
+                                 height="50"
+                                 alt="Card image">
+                            &nbsp;&nbsp;<a
+                                    href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
+                                        class="text-black"><?php echo $row['club'] ?></strong></a></td>
+                        <td><?php echo $row['goals'] ?> </td>
+                    </tr>
+                    <?php
                 }
                 ?>
                 </tbody>
             </table>
         </div>
     </div>
-
-
-
 </section>
 <footer>
     <?php include("../footer.php"); ?>

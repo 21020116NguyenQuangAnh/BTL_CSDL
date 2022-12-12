@@ -61,12 +61,6 @@
             background-repeat: repeat-y;
             background-color: blue;
         }
-        .test {
-            width: 1110px;
-            height: fit-content;
-            overflow-x: auto;
-            overflow-y: hidden;
-        }
     </style>
 
 </head>
@@ -122,21 +116,7 @@
             <div class="col-12 title-section">
                 <h2 class="heading" style="color: white; border-left: 10px solid #b1154a; background-color: darkblue">
                     &nbsp;&nbsp;COMPETITIONS </h2>
-            </div>
-        </div>
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <div class="post-entry">
-                    <div class="caption">
-                        <div class="caption-inner">
-                            <div class="author d-flex align-items-center">
-                                <div class="img mb-2 mr-3">
-                                    <img src="images/uefa.jpg" alt="" width="1110px">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <img class="img-fluid" src="images/uefa.jpg" alt="">
             </div>
         </div>
     </div>
@@ -281,7 +261,7 @@ $query_top = mysqli_query($conn, $sql_top);
         } ?>
         Season <?php echo $year ?>
     </h4>
-    <div class="widget-next-match">
+    <div class="table-responsive">
         <table class="table custom-table">
             <thead>
             <tr style="background-color: red; text-align: justify" class="text-white">
@@ -332,13 +312,13 @@ $query_top = mysqli_query($conn, $sql_top);
     <h2 style="color: white">
         Top European Competitions
     </h2>
-    <div class="card-group test">
+    <div class="row" style="margin: auto">
         <?php
         $i = 0;
         while ($row = mysqli_fetch_array($query_top)) {
             $i++;
             ?>
-            <div class="card" style>
+            <div class="card" style="width: 220px">
                 <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
                 <div class="card-body">
                     <h6 class="card-title"><?php echo $row['pretty_name'] ?></h6>
