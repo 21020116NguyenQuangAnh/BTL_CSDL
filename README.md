@@ -28,10 +28,10 @@ Football Manager
 Chức năng của Website
 </h2>
 1. Tìm kiếm cầu thủ, câu lạc bộ, giải đấu <br>
-2. Cung cấp thông tin chung về các cầu thủ đắt giá nhất (tổng hợp chung và theo riêng theo từng vị trí) <br>
+2. Cung cấp thông tin chung về các cầu thủ đắt giá nhất (tổng hợp chung và riêng theo từng vị trí) <br>
 3. Cung cấp thông tin chung về các câu lạc bộ giá trị nhất <br>
 4. Cung cấp thông tin về các giải đấu: gồm bảng xếp hạng và danh sách vua phá lưới <br>
-5. Cung cấp thông tin cụ thể về từng cầu thủ, sự nghiệp câu lạc bộ và thông số của cầu thủ trong màu áo câu lạc bộ đó <br>
+5. Cung cấp thông tin cụ thể về từng cầu thủ, sự nghiệp câu lạc bộ và thông số của cầu thủ trong màu áo câu lạc bộ <br>
 6. Cung cấp thông tin cụ thể về từng câu lạc bộ và danh sách cầu thủ thuộc câu lạc bộ đó <br>
 <h2>
 Thiết kế Cơ sở dữ liệu

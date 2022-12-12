@@ -39,7 +39,7 @@
     <style type="text/css">
         <?php include ('../css/club_profile.css'); ?>
         h2 {
-            font-size: 27px;
+            font-size: 23px;
         }
     </style>
 
@@ -261,7 +261,6 @@ $row_title = mysqli_fetch_array($query_comp_info);
                 </table>
             </div>
         </div>
-
     </div>
 
     <?php
@@ -318,7 +317,7 @@ limit 20';
                                  alt="Card image">
                             &nbsp;&nbsp;<a
                                     href="playerprofile.php?value=player&id=<?php echo $row["player_id"] ?>"><strong
-                                        class="text-black"><?php echo $row['pretty_name'] ?></strong></a></td>
+                                        class="text-black"><?php echo $row['pretty_name'] ?></strong></a>
                         </td>
                         <td><img src="<?php echo $row["img_url"] ?>" style="background-color: white" align="middle"
                                  height="50"
@@ -327,6 +326,78 @@ limit 20';
                                     href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
                                         class="text-black"><?php echo $row['club'] ?></strong></a></td>
                         <td><?php echo $row['goals'] ?> </td>
+                    </tr>
+                    <?php
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php
+    $sql_best_assist = 'SELECT players.*, clubs.club_id, clubs.img_url, clubs.pretty_name as club, sum(appearances.assists) as assists FROM `appearances` 
+inner join players on appearances.player_id = players.player_id 
+inner join games on appearances.game_id = games.game_id
+inner join clubs on appearances.player_club_id = clubs.club_id                                                  
+where games.competition_code = ? and games.season = ? 
+group by players.player_id 
+order by assists desc
+limit 20';
+    $sql_scorer = $conn->prepare($sql_best_assist);
+    $sql_scorer->bind_param("ss", $competitions, $year);
+    $sql_scorer->execute();
+    $scorer = $sql_scorer->get_result();
+    ?>
+    <div class="container site-section" style="margin-top:40px">
+        <div class="row">
+            <div class="col-6 title-section">
+                <h2 class="heading" style="color: darkblue; border-left: 10px solid #b1154a">
+                    &nbsp;&nbsp;Best Assists Scorers </h2>
+            </div>
+            <div class="col-6 text-right">
+                <div class="custom-nav">
+                    <a href="#" class="js-custom-prev-v2"><span class="icon-keyboard_arrow_left"></span></a>
+                    <span></span>
+                    <a href="#" class="js-custom-next-v2"><span class="icon-keyboard_arrow_right"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table custom-table">
+                <thead>
+                <tr style="background-color: red; text-align: justify" class="text-white">
+                    <th>STT</th>
+                    <th>Player</th>
+                    <th>Club</th>
+                    <th>Assists</th>
+                </tr>
+                </thead>
+                <tbody style="background-color: white">
+                <?php
+                $i = 0;
+                while ($row = $scorer->fetch_array()) {
+                    $i++;
+                    ?>
+                    <tr>
+                        <td><?php echo $i ?> </td>
+                        <td><img src="<?php echo $row["image_url"] ?>" style="background-color: white" align="middle"
+                                 height="50"
+                                 alt="Card image">
+                            &nbsp;&nbsp;<a
+                                    href="playerprofile.php?value=player&id=<?php echo $row["player_id"] ?>"><strong
+                                        class="text-black"><?php echo $row['pretty_name'] ?></strong></a>
+                        </td>
+                        <td><img src="<?php echo $row["img_url"] ?>" style="background-color: white" align="middle"
+                                 height="50"
+                                 alt="Card image">
+                            &nbsp;&nbsp;<a
+                                    href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
+                                        class="text-black"><?php echo $row['club'] ?></strong></a></td>
+                        <td><?php echo $row['assists'] ?> </td>
                     </tr>
                     <?php
                 }
