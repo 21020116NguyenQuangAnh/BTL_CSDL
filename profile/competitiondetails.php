@@ -90,8 +90,8 @@ $row_title = mysqli_fetch_array($query_comp_info);
                 <div class="card card-style1 border-0">
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
-                            <div class="col-lg-6 mb-4 mb-lg-0">
-                                <img src="<?php echo $row_title['img_url'] ?>" style="width: 200px; margin-left: 120px"
+                            <div class="col-lg-6 mb-4 mb-lg-0 justify-center">
+                                <img src="<?php echo $row_title['img_url'] ?>" style="width: 15vw; margin-left: 8vw"
                                      alt="Card image">
                             </div>
                             <div class="col-lg-6 px-xl-10">
@@ -230,7 +230,7 @@ $row_title = mysqli_fetch_array($query_comp_info);
                         <th>PTS</th>
                     </tr>
                     </thead>
-                    <tbody style="background-color: white; font-size: 1vw">
+                    <tbody style="background-color: white; font-size: 1rem">
                     <?php
                     $i = 0;
                     while ($row = $query_ltb->fetch_array()) {

@@ -99,7 +99,7 @@
     ?>
 </nav>
 
-<div class="latest-news" style="margin-top: 80px">
+<div class="latest-news" style="margin-top: 7rem">
     <div class="container">
         <div class="row">
             <div class="col-12 title-section">
@@ -109,7 +109,7 @@
         </div>
     </div>
 </div>
-
+<br>
 <?php
 if ($row = $player->fetch_array()) {
     ?>

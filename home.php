@@ -49,6 +49,10 @@
         /*    overflow-y:hidden;*/
         /*    font-size: 5vh;*/
         /*}*/
+        h1 {
+            font-size: 3.25vw;
+        }
+
         h2 {
             color: white;
             border-left: 10px solid #b1154a;
@@ -116,7 +120,7 @@
         $comp = $comp_id->get_result();
         ?>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 7rem">
         <div id="pic" class="carousel slide" data-ride="carousel">
 
             <!-- Indicators -->
@@ -163,19 +167,18 @@
             </a>
         </div>
     </div>
-
-    <div class="latest-news" style="margin-top: 80px">
-        <div class="container-fluid">
+    <div class="latest-news" style="margin-top: 2rem">
+        <div class="container">
             <div class="row">
                 <div class="col-12 title-section">
                     <h2 class="heading"
                         style="color: white; border-left: 10px solid #b1154a; background-color: darkblue"> &nbsp;&nbsp;HOME </h2>
-                    <img class = "img-fluid" src="images/epl.jpg" alt="" style="width: 100vw">
+                    <img class="img-fluid" src="images/epl.jpg" alt="">
                 </div>
             </div>
         </div>
     </div>
-    </div>
+    <br>
     <?php
     if ($row = $player->fetch_array()) {
     ?>

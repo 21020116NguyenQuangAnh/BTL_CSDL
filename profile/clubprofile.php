@@ -90,7 +90,7 @@ $row_title = mysqli_fetch_array($query_club_info);
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
                             <div class="col-lg-6 mb-4 mb-lg-0">
-                                <img src="<?php echo $row_title['img_url'] ?>" style="width: 300px; margin-left: 80px"
+                                <img src="<?php echo $row_title['img_url'] ?>" style="width: 16vw; margin-left: 8vw"
                                      alt="Card image">
                             </div>
                             <div class="col-lg-6 px-xl-10">
