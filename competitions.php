@@ -158,7 +158,7 @@
     <br>
     <div class="container site-section">
         <div class="row">
-            <div class="col-6 title-section">
+            <div class="container">
                 <h2 class="heading" style="color: white; border-left: 10px solid #b1154a; font-size: 1.75rem">
                     &nbsp;&nbsp;League Table </h2>
             </div>

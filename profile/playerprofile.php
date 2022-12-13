@@ -147,9 +147,9 @@ WHERE p.player_id = $_GET[id]";
                                         <p class="m-b-10 f-w-600">Curent club</p>
                                         <h5 class="f-w-600">
                                             <b>
-                                                <img src="<?php echo $row_title['logo'] ?>" style="max-height: 20px">
+                                                <img src="<?php echo $row_title['logo'] ?>" style="height: 25px">
                                                 <a href="clubprofile.php?value=club&id=<?php echo $row_title['current_club_id'] ?>"
-                                                   style="font-size: 2vh; color: darkblue">
+                                                   style="font-size: 20px; color: darkblue">
                                                     <?php echo $row_title['club'] ?>
                                                 </a>
                                             </b>
@@ -209,17 +209,16 @@ $query_career = mysqli_query($conn, $sql_career);
             while ($row = $query_career->fetch_array()) {
                 ?>
                 <tr>
-                    <td style="font-size: 2.5vh"><?php echo $row['season'] ?> </td>
-                    <td><img src="<?php echo $row["Logo"] ?>" style="background-color: white" align="middle"
-                             height="25"
+                    <td style="font-size: 20px"><?php echo $row['season'] ?> </td>
+                    <td><img src="<?php echo $row["Logo"] ?>" style="background-color: white; height: 25px" align="middle"
                              alt="Card image">
                         &nbsp;&nbsp;<a
                                 href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"
-                                style="font-size: 2.5vh"><strong
+                                style="font-size: 20px"><strong
                                     class="text-black"><?php echo $row['club_name'] ?></strong></a></td>
-                    <td style="font-size: 2.5vh"><?php echo $row['Played'] ?></td>
-                    <td style="font-size: 2.5vh"><?php echo $row['Goals'] ?></td>
-                    <td style="font-size: 2.5vh"><?php echo $row['Assists'] ?></td>
+                    <td style="font-size: 20px"><?php echo $row['Played'] ?></td>
+                    <td style="font-size: 20px"><?php echo $row['Goals'] ?></td>
+                    <td style="font-size: 20px"><?php echo $row['Assists'] ?></td>
                 </tr>
                 <?php
             }

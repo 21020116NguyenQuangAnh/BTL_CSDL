@@ -119,7 +119,7 @@ $row_title = mysqli_fetch_array($query_comp_info);
             </div>
         </div>
         <form action="" method="post" style="color: darkblue">
-            <a class="col-sm-2 text-left" style="font-size: 1.7vw"><b>&nbsp;Season:</b></a>
+            <a class="col-sm-2 text-left" style="font-size: 25px"><b>&nbsp;Season:</b></a>
             <input type="text" name="year" value="">
             <button type="submit" class="text-left">Search</button>
         </form>
@@ -139,7 +139,7 @@ $row_title = mysqli_fetch_array($query_comp_info);
         ?>
         <div class="container site-section">
             <div class="row">
-                <div class="col-6 title-section">
+                <div class="container">
                     <br>
                     <h2 class="heading" style="color: darkblue; border-left: 10px solid #b1154a">
                         &nbsp;&nbsp;League Table </h2>
@@ -279,7 +279,7 @@ limit 20';
     ?>
     <div class="container site-section" style="margin-top:40px">
         <div class="row">
-            <div class="col-6 title-section">
+            <div class="container">
                 <h2 class="heading" style="color: darkblue; border-left: 10px solid #b1154a">
                     &nbsp;&nbsp;Best Goal Scorers </h2>
             </div>
@@ -351,9 +351,9 @@ limit 20';
     ?>
     <div class="container site-section" style="margin-top:40px">
         <div class="row">
-            <div class="col-6 title-section">
+            <div class="container">
                 <h2 class="heading" style="color: darkblue; border-left: 10px solid #b1154a">
-                    &nbsp;&nbsp;Best Assists Scorers </h2>
+                    &nbsp;&nbsp;Player with most assists</h2>
             </div>
             <div class="col-6 text-right">
                 <div class="custom-nav">
