@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name=" viewport " content=" width = device-width, initial-scale = 1 ">
     <title>Clubs</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity>
@@ -141,6 +140,7 @@
         ?>
 
         <div class="container">
+            <br>
             <h2 style="color: white; border-left: 10px solid #b1154a;">&nbsp;&nbsp;Most valuable clubs</h2>
             <div id="demo" class="carousel slide test" data-ride="carousel">
 
