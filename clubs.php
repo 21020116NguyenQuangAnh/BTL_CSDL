@@ -140,7 +140,6 @@
         ?>
         <br>
         <div class="container">
-            <br>
             <h2 style="color: white; border-left: 10px solid #b1154a;">&nbsp;&nbsp;Most valuable clubs</h2>
             <div id="demo" class="carousel slide test" data-ride="carousel">
 
