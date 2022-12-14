@@ -138,7 +138,7 @@
         $sql_club = 'SELECT * FROM `clubs` order by `total_market_value` desc limit 18;';
         $query_club = mysqli_query($conn, $sql_club);
         ?>
-
+        <br>
         <div class="container">
             <br>
             <h2 style="color: white; border-left: 10px solid #b1154a;">&nbsp;&nbsp;Most valuable clubs</h2>
