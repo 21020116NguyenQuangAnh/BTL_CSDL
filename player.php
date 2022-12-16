@@ -139,9 +139,10 @@ if ($row = $player->fetch_array()) {
             ?>
         </div>
     </div>
+    <br>
 
     <?php
-} else {
+}
     include('admincp/config/config.php');
     $sql_player = 'select * from players order by market_value_in_gbp desc limit 18';
     $query_player = mysqli_query($conn, $sql_player);
@@ -1528,7 +1529,6 @@ if ($row = $player->fetch_array()) {
             </a>
         </div>
     </div>
-<?php } ?>
 </main>
 <footer>
     <?php include('footer.php'); ?>

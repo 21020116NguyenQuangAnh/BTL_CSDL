@@ -103,6 +103,7 @@
             </div>
         </div>
     </div>
+    <br>
 
     <?php
     if ($row = $club->fetch_array()) {
@@ -133,8 +134,9 @@
                 ?>
             </div>
         </div>
+        <br>
         <?php
-    } else {
+    }
         include('admincp/config/config.php');
         $sql_club = 'SELECT * FROM `clubs` order by `total_market_value` desc limit 18;';
         $query_club = mysqli_query($conn, $sql_club);
@@ -232,7 +234,6 @@
                 </a>
             </div>
         </div>
-    <?php } ?>
 </main>
 <footer>
     <?php include('footer.php'); ?>

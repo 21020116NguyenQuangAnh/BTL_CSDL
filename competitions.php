@@ -122,6 +122,7 @@
             </div>
         </div>
     </div>
+    <br>
     <?php
     if ($row = $comp->fetch_array()) {
         ?>
@@ -148,13 +149,10 @@
                     </div>
                     <?php
                 }
+                }
                 ?>
             </div>
         </div>
-
-        <?php
-    } else {
-    ?>
     <br>
     <div class="container site-section">
         <div class="row">
@@ -330,7 +328,6 @@
                        class="btn btn-primary stretched-link">See Profile</a>
                 </div>
                 <?php
-            }
             }
             ?>
         </div>
