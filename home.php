@@ -184,7 +184,7 @@
     ?>
     <div class="container" style="color: black">
         <h2>
-            <a href="player.php" style="color: white">Players</a>
+            <a href="player.php" style="color: white">&nbsp;&nbsp;Players</a>
         </h2>
         <br>
         <div class="row" style="margin-left: 0">
@@ -220,7 +220,7 @@
     ?>
     <div class="container" style="color: black">
         <h2>
-            <a href="clubs.php" style="color: white">Clubs</a>
+            <a href="clubs.php" style="color: white">&nbsp;&nbsp;Clubs</a>
         </h2>
         <br>
         <div class="row" style="margin-left: 0">
@@ -256,7 +256,7 @@
     ?>
     <div class="container" style="color: black">
         <h2>
-            <a href="competitions.php" style="color: white">Competitions</a>
+            <a href="competitions.php" style="color: white">&nbsp;&nbsp;Competitions</a>
         </h2>
         <br>
         <div class="row" style="margin-left: 0">
