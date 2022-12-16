@@ -186,6 +186,7 @@
         <h2>
             <a href="player.php" style="color: white">Players</a>
         </h2>
+        <br>
         <div class="row" style="margin-left: 0">
             <div class="card" style="width: 159px">
                 <img class="card-img-top" src="<?php echo $row['image_url'] ?>" alt="Card image">
@@ -212,6 +213,7 @@
             ?>
         </div>
     </div>
+    <br>
 
     <?php
     if ($row = $club->fetch_array()) {
@@ -220,6 +222,7 @@
         <h2>
             <a href="clubs.php" style="color: white">Clubs</a>
         </h2>
+        <br>
         <div class="row" style="margin-left: 0">
             <div class="card" style="width: 159px">
                 <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
@@ -246,6 +249,7 @@
             ?>
         </div>
     </div>
+    <br>
 
     <?php
     if ($row = $comp->fetch_array()) {
@@ -254,6 +258,7 @@
         <h2>
             <a href="competitions.php" style="color: white">Competitions</a>
         </h2>
+        <br>
         <div class="row" style="margin-left: 0">
             <div class="card" style="width: 159px">
                 <img class="card-img-top" src="<?php echo $row['img_url'] ?>" alt="Card image">
@@ -280,6 +285,7 @@
             ?>
         </div>
     </div>
+    <br>
     <?php
     include('admincp/config/config.php');
 
