@@ -199,7 +199,7 @@ $query_career = mysqli_query($conn, $sql_career);
             <tr style="background-color: red; text-align: justify; font-size: 2.5vh" class="text-white">
                 <th>SEASON</th>
                 <th>CLUB NAME</th>
-                <th>APPEARANCES</th>
+                <th>MATCH</th>
                 <th>GOALS</th>
                 <th>ASSISTS</th>
             </tr>

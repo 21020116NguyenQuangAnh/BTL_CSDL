@@ -264,11 +264,12 @@ $row_title = mysqli_fetch_array($query_comp_info);
     </div>
 
     <?php
-    $sql_best = 'SELECT players.*, clubs.club_id, clubs.img_url, clubs.pretty_name as club, sum(appearances.goals) as goals FROM `appearances` 
+    $sql_best = 'SELECT players.*, clubs.club_id, clubs.img_url, clubs.pretty_name as club, sum(appearances.goals) as goals, COUNT(appearances.player_id)  as `Match`
+FROM `appearances` 
 inner join players on appearances.player_id = players.player_id 
 inner join games on appearances.game_id = games.game_id
 inner join clubs on appearances.player_club_id = clubs.club_id                                                  
-where games.competition_code = ? and games.season = ? 
+where games.competition_code = ? and games.season = ? and appearances.minutes_played > 0
 group by players.player_id 
 order by goals desc
 limit 20';
@@ -301,6 +302,7 @@ limit 20';
                     <th>STT</th>
                     <th>Player</th>
                     <th>Club</th>
+                    <th>Match</th>
                     <th>Goals</th>
                 </tr>
                 </thead>
@@ -325,6 +327,7 @@ limit 20';
                             &nbsp;&nbsp;<a
                                     href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
                                         class="text-black"><?php echo $row['club'] ?></strong></a></td>
+                        <td><?php echo $row['Match'] ?></td>
                         <td><?php echo $row['goals'] ?> </td>
                     </tr>
                     <?php
@@ -336,11 +339,12 @@ limit 20';
     </div>
 
     <?php
-    $sql_best_assist = 'SELECT players.*, clubs.club_id, clubs.img_url, clubs.pretty_name as club, sum(appearances.assists) as assists FROM `appearances` 
+    $sql_best_assist = 'SELECT players.*, clubs.club_id, clubs.img_url, clubs.pretty_name as club, sum(appearances.assists) as assists, COUNT(appearances.player_id)  as `Match` 
+FROM `appearances` 
 inner join players on appearances.player_id = players.player_id 
 inner join games on appearances.game_id = games.game_id
 inner join clubs on appearances.player_club_id = clubs.club_id                                                  
-where games.competition_code = ? and games.season = ? 
+where games.competition_code = ? and games.season = ? and appearances.minutes_played > 0
 group by players.player_id 
 order by assists desc
 limit 20';
@@ -373,6 +377,7 @@ limit 20';
                     <th>STT</th>
                     <th>Player</th>
                     <th>Club</th>
+                    <th>Match</th>
                     <th>Assists</th>
                 </tr>
                 </thead>
@@ -391,12 +396,13 @@ limit 20';
                                     href="playerprofile.php?value=player&id=<?php echo $row["player_id"] ?>"><strong
                                         class="text-black"><?php echo $row['pretty_name'] ?></strong></a>
                         </td>
-                        <td><img src="<?php echo $row["img_url"] ?>" style="background-color: white" align="middle"
+                        <td><img src="<?php echo $row["img_url"] ?>" style="background-color: white" align="left"
                                  height="50"
                                  alt="Card image">
                             &nbsp;&nbsp;<a
                                     href="clubprofile.php?value=club&id=<?php echo $row["club_id"] ?>"><strong
                                         class="text-black"><?php echo $row['club'] ?></strong></a></td>
+                        <td><?php echo $row['Match'] ?> </td>
                         <td><?php echo $row['assists'] ?> </td>
                     </tr>
                     <?php
