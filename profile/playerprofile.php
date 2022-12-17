@@ -193,7 +193,7 @@ $query_career = mysqli_query($conn, $sql_career);
 
 <h5 class="section-title text-primary mb-3 mb-sm-4">Club career</h5>
 <h4>
-    <div class="widget-next-match">
+    <div class="table-responsive">
         <table class="table custom-table">
             <thead>
             <tr style="background-color: red; text-align: justify; font-size: 2.5vh" class="text-white">

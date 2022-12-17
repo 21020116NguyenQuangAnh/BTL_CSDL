@@ -95,7 +95,7 @@ $row_title = mysqli_fetch_array($query_club_info);
                             </div>
                             <div class="col-lg-6 px-xl-10">
                                 <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                                    <h3 class="h2 text-white mb-0" style="min-width: 280px"><?php echo $row_title['pretty_name'] ?></h3>
+                                    <h3 class="h2 text-white mb-0" style="min-width: 28vw"><?php echo $row_title['pretty_name'] ?></h3>
                                     <span class="text-primary">
                                         <b><?php echo $row_title['country_name'] ?></b>
                                         <img src="<?php echo $row_title['flag_url'] ?>"
